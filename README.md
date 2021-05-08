@@ -1,1 +1,1 @@
-# EarDetection-segmentation-ai
+# Ear Segmentation
