@@ -1,5 +1,8 @@
 # Ear Segmentation
 
+## Model
+
+https://drive.google.com/drive/folders/1_M_8uuTgU__wRVbE2g2jOagLD7Eog1F8?usp=sharing
 
 ## Requirement
 
