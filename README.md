@@ -13,6 +13,6 @@ pip install imgviz
 pip install opencv-python
 pip install torch==1.8.1+cpu torchvision==0.9.1+cpu torchaudio==0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
 ```
-## YOUTUBE VIDEO
+## Youtube Video
 
 https://www.youtube.com/watch?v=5Puxj7Q0EEo
