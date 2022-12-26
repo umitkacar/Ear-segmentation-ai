@@ -1,3 +1,4 @@
+from typing import List
 from albumentations import Compose, Resize,Lambda
 
 def get_validation_augmentation():
@@ -10,7 +11,7 @@ def get_validation_augmentation():
 def to_tensor(x, **kwargs):
     return x.transpose(2, 0, 1).astype('float32')
 
-def get_preprocessing(preprocessing_fn):
+def get_preprocessing(preprocessing_fn) -> Compose:
     """Construct preprocessing transform
     Args:
         preprocessing_fn (callbale): data normalization function 
@@ -18,8 +19,9 @@ def get_preprocessing(preprocessing_fn):
     Return:
         transform: albumentations.Compose
     """
-    _transform = [
+
+    transform:List[Lambda] = [
         Lambda(image=preprocessing_fn),
         Lambda(image=to_tensor),
     ]
-    return Compose(_transform)
+    return Compose(transform)
