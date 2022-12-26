@@ -1,44 +1,15 @@
 import os
 import cv2
 import torch
-from albumentations import Compose, Resize,Lambda
 import segmentation_models_pytorch as smp
 import imgviz
-
-os.environ["CUDA_VISIBLE_DEVICES"]=""
+from const import ACTIVATION,CLASSES,DEVICE,ENCODER,ENCODER_WEIGHTS,LOAD_MODEL_DEPLOY_PATH
+from preprocessing import get_preprocessing
 
 # device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+os.environ["CUDA_VISIBLE_DEVICES"]=""
 
-LOAD_MODEL_DEPLOY_PATH = "./model_ear/best_model_ear_v1_43.pth"
-ENCODER = 'resnet18'
-ENCODER_WEIGHTS = 'imagenet'
-CLASSES = ['ear']
-ACTIVATION = 'sigmoid'
-DEVICE = "cpu"
 
-def get_validation_augmentation():
-    """Add paddings to make image shape divisible by 32"""
-    test_transform = [
-          Resize(height=320, width=480, always_apply=True),
-    ]
-    return Compose(test_transform)
-
-def to_tensor(x, **kwargs):
-    return x.transpose(2, 0, 1).astype('float32')
-
-def get_preprocessing(preprocessing_fn):
-    """Construct preprocessing transform
-    Args:
-        preprocessing_fn (callbale): data normalization function 
-            (can be specific for each pretrained neural network)
-    Return:
-        transform: albumentations.Compose
-    """
-    _transform = [
-        Lambda(image=preprocessing_fn),
-        Lambda(image=to_tensor),
-    ]
-    return Compose(_transform)
 
 if __name__ == "__main__":
 
@@ -69,7 +40,7 @@ if __name__ == "__main__":
     print(frame_width)
     print(frame_height)
     frame_fps = 20
-    out = cv2.VideoWriter('outpy.avi',cv2.VideoWriter_fourcc('M','J','P','G'), frame_fps, (640,480))
+    out = cv2.VideoWriter('output.avi',cv2.VideoWriter_fourcc('M','J','P','G'), frame_fps, (640,480))
 
     num = 0
     while(1):
@@ -99,7 +70,7 @@ if __name__ == "__main__":
                 # colorize label image
                 class_label = pr_mask_orj.squeeze().astype(int)
                 labelviz = imgviz.label2rgb(class_label,
-                                        img=frame_rgb, 
+                                        image=frame_rgb, 
                                         label_names=['background','ear'],
                                         font_size=30,
                                         loc="rb",)

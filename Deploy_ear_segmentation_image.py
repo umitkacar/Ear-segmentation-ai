@@ -4,17 +4,11 @@ import cv2
 import torch
 from albumentations import Compose, Resize,Lambda
 import segmentation_models_pytorch as smp
-
-os.environ["CUDA_VISIBLE_DEVICES"]=""
+from const import ACTIVATION,CLASSES,DEVICE,ENCODER,ENCODER_WEIGHTS,LOAD_MODEL_DEPLOY_PATH
+from preprocessing import get_preprocessing
 
 # device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
-LOAD_MODEL_DEPLOY_PATH = "./model_ear/best_model_ear_v1_43.pth"
-ENCODER = 'resnet18'
-ENCODER_WEIGHTS = 'imagenet'
-CLASSES = ['ear']
-ACTIVATION = 'sigmoid'
-DEVICE = "cpu"
+os.environ["CUDA_VISIBLE_DEVICES"]=""
 
 def get_validation_augmentation():
     """Add paddings to make image shape divisible by 32"""
