@@ -127,3 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#ignore model_ear and test-images folder
+model_ear/
+test-images/
+
+#ignore webcam mode output.avi file
+output.avi
