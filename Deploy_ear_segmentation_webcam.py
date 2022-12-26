@@ -13,6 +13,7 @@ os.environ["CUDA_VISIBLE_DEVICES"]=""
 
 if __name__ == "__main__":
 
+    return_frame_status = True
     # create segmentation model with pretrained encoder
     model = smp.Unet(
         encoder_name=ENCODER,
@@ -42,48 +43,44 @@ if __name__ == "__main__":
     frame_fps = 20
     out = cv2.VideoWriter('output.avi',cv2.VideoWriter_fourcc('M','J','P','G'), frame_fps, (640,480))
 
-    num = 0
-    while(1):
-        ret, frame_bgr = cap.read()
-        #frame = cv2.flip(cv2.transpose(frame), flipCode=1)
-        if ret==True:
-            num = num + 1
+    while(return_frame_status==True):
         
-            frame_rgb = cv2.cvtColor(frame_bgr, cv2.COLOR_BGR2RGB)
-            frame_rgb_resize = cv2.resize(frame_rgb, (480,320))
+        return_frame_status, camera_frame_bgr = cap.read()
+        #frame = cv2.flip(cv2.transpose(frame), flipCode=1)
+        
+        frame_rgb = cv2.cvtColor(camera_frame_bgr, cv2.COLOR_BGR2RGB)
+        frame_rgb_resize = cv2.resize(frame_rgb, (480,320))
 
-            with torch.no_grad():
-                
-                #tensor_img = my_transforms(image=image)['image'].unsqueeze(0)
-                #predictions = model.forward(tensor_img.to(DEVICE))
-                
-                sample = preprocessing(image=frame_rgb_resize)
-                image = sample['image']
-
-                x_tensor = torch.from_numpy(image).to(DEVICE).unsqueeze(0)
-                
-                pr_mask = model.predict(x_tensor)
-                pr_mask = (pr_mask.squeeze().cpu().numpy().round())
-
-                pr_mask_orj = cv2.resize(pr_mask,(frame_rgb.shape[1],frame_rgb.shape[0]))
-    
-                # colorize label image
-                class_label = pr_mask_orj.squeeze().astype(int)
-                labelviz = imgviz.label2rgb(class_label,
-                                        image=frame_rgb, 
-                                        label_names=['background','ear'],
-                                        font_size=30,
-                                        loc="rb",)
-
-                frame_bgr = cv2.cvtColor(labelviz, cv2.COLOR_BGR2RGB)
+        with torch.no_grad():
             
-            #cv2.imshow('Ear Mask',pr_mask)
-            cv2.imshow('Ear Image',frame_bgr)
-            out.write(frame_bgr)
+            #tensor_img = my_transforms(image=image)['image'].unsqueeze(0)
+            #predictions = model.forward(tensor_img.to(DEVICE))
+            
+            sample = preprocessing(image=frame_rgb_resize)
+            image = sample['image']
 
-            if cv2.waitKey(1) & 0xFF == ord('q'):
-                break
-        else:
+            x_tensor = torch.from_numpy(image).to(DEVICE).unsqueeze(0)
+            
+            pr_mask = model.predict(x_tensor)
+            pr_mask = (pr_mask.squeeze().cpu().numpy().round())
+
+            pr_mask_orj = cv2.resize(pr_mask,(frame_rgb.shape[1],frame_rgb.shape[0]))
+
+            # colorize label image
+            class_label = pr_mask_orj.squeeze().astype(int)
+            labelviz = imgviz.label2rgb(class_label,
+                                    image=frame_rgb, 
+                                    label_names=['background','ear'],
+                                    font_size=30,
+                                    loc="rb",)
+
+            camera_frame_bgr = cv2.cvtColor(labelviz, cv2.COLOR_BGR2RGB)
+        
+        #cv2.imshow('Ear Mask',pr_mask)
+        cv2.imshow('Ear Image',camera_frame_bgr)
+        out.write(camera_frame_bgr)
+
+        if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
     cap.release()
