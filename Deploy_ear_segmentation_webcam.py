@@ -32,8 +32,10 @@ def ear_segmentation_webcam(video_capture: int = 0, record: bool = False):
     model.eval()
     model.to(DEVICE)
 
-    preprocessing_fn: partial = smp.encoders.get_preprocessing_fn(ENCODER, ENCODER_WEIGHTS)
-    preprocessing = get_preprocessing(preprocessing_fn)
+    preprocess_fn: partial = smp.encoders.get_preprocessing_fn(
+        ENCODER, ENCODER_WEIGHTS
+    )
+    preprocessing = get_preprocessing(preprocess_fn)
 
     # Webcam acquisition
     cap = cv2.VideoCapture(video_capture)
@@ -43,7 +45,9 @@ def ear_segmentation_webcam(video_capture: int = 0, record: bool = False):
 
     # If Camera Device is not opened, exit the program
     if not cap.isOpened():
-        print("Video device couldn't be opened. Please change your video device number")
+        print(
+            "Video device couldn't be opened. Please change your video device number"
+        )
         exit()
 
     # # Video Writer
@@ -55,10 +59,13 @@ def ear_segmentation_webcam(video_capture: int = 0, record: bool = False):
         frame_fps = 20
 
         video_record_out = cv2.VideoWriter(
-            "output.avi", cv2.VideoWriter_fourcc("M", "J", "P", "G"), frame_fps, (640, 480)
+            "output.avi",
+            cv2.VideoWriter_fourcc("M", "J", "P", "G"),
+            frame_fps,
+            (640, 480),
         )
 
-    while return_frame_status == True:
+    while return_frame_status is True:
 
         return_frame_status, camera_frame_bgr = cap.read()
         # frame = cv2.flip(cv2.transpose(frame), flipCode=1)
@@ -79,7 +86,9 @@ def ear_segmentation_webcam(video_capture: int = 0, record: bool = False):
             pr_mask = model.predict(x_tensor)
             pr_mask = pr_mask.squeeze().cpu().numpy().round()
 
-            pr_mask_orj = cv2.resize(pr_mask, (frame_rgb.shape[1], frame_rgb.shape[0]))
+            pr_mask_orj = cv2.resize(
+                pr_mask, (frame_rgb.shape[1], frame_rgb.shape[0])
+            )
 
             # colorize label image
             class_label = pr_mask_orj.squeeze().astype(int)

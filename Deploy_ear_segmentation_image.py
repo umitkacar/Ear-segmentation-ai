@@ -4,7 +4,7 @@ import os
 import cv2
 import segmentation_models_pytorch as smp
 import torch
-from albumentations import Compose, Lambda, Resize
+from albumentations import Compose, Resize
 
 from const import DEVICE, ENCODER, ENCODER_WEIGHTS, LOAD_MODEL_DEPLOY_PATH
 from preprocessing import get_preprocessing
@@ -12,12 +12,14 @@ from preprocessing import get_preprocessing
 # device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
 
+
 def get_validation_augmentation():
     """Add paddings to make image shape divisible by 32"""
     test_transform = [
         Resize(height=320, width=480, always_apply=True),
     ]
     return Compose(test_transform)
+
 
 if __name__ == "__main__":
 
@@ -33,7 +35,9 @@ if __name__ == "__main__":
     model.eval()
     model.to(DEVICE)
 
-    preprocessing_fn = smp.encoders.get_preprocessing_fn(ENCODER, ENCODER_WEIGHTS)
+    preprocessing_fn = smp.encoders.get_preprocessing_fn(
+        ENCODER, ENCODER_WEIGHTS
+    )
     preprocessing = get_preprocessing(preprocessing_fn)
 
     data_dir = ["./test-images"]
@@ -52,9 +56,6 @@ if __name__ == "__main__":
         image = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
         with torch.no_grad():
-
-            # tensor_img = my_transforms(image=image)['image'].unsqueeze(0)
-            # predictions = model.forward(tensor_img.to(DEVICE))
 
             sample = preprocessing(image=image)
             image = sample["image"]
