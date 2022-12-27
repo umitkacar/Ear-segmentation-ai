@@ -22,17 +22,17 @@
 
 * Python 3.8 to Python3.9 (Virtualenv recommended)
 * Download Ear Model file and put into `model_ear` folder
-* Image mode require `test-images` folder and add jpg file(s) 
+* Image mode require `test-images` folder and add jpg file(s)
 * Optionally poetry
 
 Note: Python3.9+ not working at the moment.
-## :hammer_and_wrench: Installation :hammer_and_wrench: 
+## :hammer_and_wrench: Installation :hammer_and_wrench:
 
 
 ### Pip installation :sparkles:
 
 ```properties
-pip install -r requirements.txt -f https://download.pytorch.org/whl/torch_stable.html 
+pip install -r requirements.txt -f https://download.pytorch.org/whl/torch_stable.html
 ```
 
 ### Poetry installation :sparkles:
@@ -40,7 +40,7 @@ pip install -r requirements.txt -f https://download.pytorch.org/whl/torch_stable
 ```properties
 poetry shell
 poetry install
-poe pytorch_cpu 
+poe pytorch_cpu
 ```
 
 ## Optional (If you have multiple python installation)
@@ -51,7 +51,7 @@ poe pytorch_cpu
 poetry env use $(which python3.8)
 poetry shell
 poetry install
-poe pytorch_cpu 
+poe pytorch_cpu
 ```
 
 ## Usage
@@ -73,6 +73,3 @@ python Deploy_ear_segmentation_image.py
 <p>
 <a href="https://www.youtube.com/watch?v=5Puxj7Q0EEo"><img alt="Youtube" src="https://img.shields.io/badge/Youtube-FF0000?logo=Youtube&logoColor=white"></a>
 </p>
-
-
-

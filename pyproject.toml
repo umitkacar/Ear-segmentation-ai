@@ -33,14 +33,28 @@ pytorch_cpu = "pip3 install torch==1.8.1+cpu torchvision==0.9.1+cpu segmentation
 
 [tool.pytest.ini_options]
 addopts = "--black --isort --flake8"
-flake8-max-line-length = 100
+flake8-max-line-length = 79
 
 [tool.isort]
-line_length = 100
+line_length = 79
 profile = "black"
 
 [tool.black]
-line-length = 100
+line-length = 79
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
 
 
 [build-system]
