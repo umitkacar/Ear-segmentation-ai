@@ -4,8 +4,10 @@
 <p>
   <img alt="Python38" src="https://img.shields.io/badge/Python-3.8-3776AB.svg?logo=Python&logoColor=white"></img>
   <img alt="Python39" src="https://img.shields.io/badge/Python-3.9-3776AB.svg?logo=Python&logoColor=white"></img>
-  <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-1.8.1+cpu-EE4C2C.svg?logo=PyTorch&logoColor=white"></img>
-  <img alt="Torchvision" src="https://img.shields.io/badge/Torchvision-0.9.1+cpu-EE4C2C.svg?logo=PyTorch&logoColor=white"></img>
+  <img alt="Python310" src="https://img.shields.io/badge/Python-3.10-3776AB.svg?logo=Python&logoColor=white"></img>
+  <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-v1.13.1-EE4C2C.svg?logo=PyTorch&logoColor=white"></img>
+  <img alt="Torchvision" src="https://img.shields.io/badge/Torchvision-v0.14.1-EE4C2C.svg?logo=PyTorch&logoColor=white"></img>
+  <img alt="Cuda" src="https://img.shields.io/badge/Cuda-Enabled-76B900.svg?logo=Nvidia&logoColor=white"></img>
   <img alt="Poetry" src="https://img.shields.io/badge/Poetry-60A5FA.svg?logo=Poetry&logoColor=white"></img>
   <img alt="Black" src="https://img.shields.io/badge/code%20style-black-black"></img>
   <img alt="Mypy" src="https://img.shields.io/badge/mypy-checked-blue"></img>
@@ -20,14 +22,12 @@
 
 ## Requirements ⚙️
 
-* Python 3.8 to Python3.9 (Virtualenv recommended)
+* Python 3.8 to Python3.10 (Virtualenv recommended)
 * Download Ear Model file and put into `model_ear` folder
-* Image mode require `test-images` folder and add jpg file(s)
-* Optionally poetry
+* Optional: poetry
+* Optional: Nvidia CUDA for cuda usage
 
-Note: Python3.9+ not working at the moment.
 ## :hammer_and_wrench: Installation :hammer_and_wrench:
-
 
 ### Pip installation :sparkles:
 
@@ -40,32 +40,43 @@ pip install -r requirements.txt -f https://download.pytorch.org/whl/torch_stable
 ```properties
 poetry shell
 poetry install
-poe pytorch_cpu
 ```
 
 ## Optional (If you have multiple python installation)
 
-### Python 3.8 and 3.9
-
 ```properties
-poetry env use $(which python3.8)
+poetry env use $(which python3.10)
 poetry shell
 poetry install
-poe pytorch_cpu
 ```
 
 ## Usage
 
+```
+usage: earsegmentationai_cli.py [-h] -m {c,p} [-d [{cpu,cuda}]] [-fp FOLDERPATH] [-id [DEVICEID]]
+
+options:
+  -h, --help            show this help message and exit
+  -m {c,p}, --mode {c,p}
+                        Select camera or picture mode
+  -d [{cpu,cuda}], --device [{cpu,cuda}]
+                        Run in gpu or cpu mode
+  -fp FOLDERPATH, --folderpath FOLDERPATH
+                        Folder path for image(s) for image mode only
+  -id [DEVICEID], --deviceId [DEVICEID]
+                        Camera deviceId /dev/videoX for camera mode only
+```
+
 Webcam Mode :camera:
 
 ```properties
-python Deploy_ear_segmentation_webcam.py
+python earsegmentationai_cli.py --mode c --device gpu
 ```
 
 Image Mode :art:
 
 ```properties
-python Deploy_ear_segmentation_image.py
+python earsegmentationai_cli.py --mode m --fp /path/xxx/
 ```
 
 ## Youtube Video :camera: :sparkles:

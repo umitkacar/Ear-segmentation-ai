@@ -1,9 +1,10 @@
 [tool.poetry]
-name = "Ear-segmentation-ai"
-version = "0.1.0"
+name = "earsegmentationai"
+version = "0.1.2"
 description = "Pytorch based Ear Detection in picture and camera"
 authors = ["Umit KACAR <umitkacar.phd@gmail.com>","Onuralp SEZER <thunderbirdtr@gmail.com>"]
 readme = "README.md"
+packages = [{include = "earsegmentationai"}]
 
 
 [tool.poetry.dependencies]
@@ -14,6 +15,9 @@ pillow = "9.3.0"
 opencv-python = "4.6.0.66"
 albumentations = "^1.3.0"
 imgviz = "^1.6.2"
+torch = "^1.13.1"
+torchvision = "^0.14.1"
+segmentation-models-pytorch = "^0.3.1"
 
 [tool.poetry.group.dev.dependencies]
 black = "^22.12.0"
@@ -29,7 +33,7 @@ pyupgrade = "^3.3.1"
 
 
 [tool.poe.tasks]
-pytorch_cpu = "pip3 install torch==1.8.1+cpu torchvision==0.9.1+cpu segmentation-models-pytorch==0.1.3 --extra-index-url https://download.pytorch.org/whl/cpu"
+pytorch_cpu = "pip3 install torch torchvision --extra-index-url https://download.pytorch.org/whl/cpu"
 
 [tool.pytest.ini_options]
 addopts = "--black --isort --flake8"

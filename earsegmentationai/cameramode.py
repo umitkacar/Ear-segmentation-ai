@@ -1,4 +1,3 @@
-import os
 from functools import partial
 from typing import Any, Optional
 
@@ -8,29 +7,24 @@ import numpy as np
 import segmentation_models_pytorch as smp
 import torch
 
-from const import DEVICE, ENCODER, ENCODER_WEIGHTS, LOAD_MODEL_DEPLOY_PATH
-from preprocessing import get_preprocessing
+from earsegmentationai.const import (
+    ENCODER,
+    ENCODER_WEIGHTS,
+    LOAD_MODEL_DEPLOY_PATH,
+)
+from earsegmentationai.preprocessing import get_preprocessing
 
-# device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-os.environ["CUDA_VISIBLE_DEVICES"] = ""
 
-
-def ear_segmentation_webcam(video_capture: int = 0, record: bool = False):
+def ear_segmentation_webcam(
+    video_capture: int = 0, record: bool = False, device="cpu"
+):
 
     return_frame_status: bool = True
     video_record_out: Optional[Any] = None
 
-    # create segmentation model with pretrained encoder
-    # model = smp.Unet(
-    #     encoder_name=ENCODER,
-    #     encoder_weights=ENCODER_WEIGHTS,
-    #     classes=len(CLASSES),
-    #     activation=ACTIVATION,
-    # )
-
-    model = torch.load(LOAD_MODEL_DEPLOY_PATH, map_location=DEVICE)
+    model = torch.load(LOAD_MODEL_DEPLOY_PATH, map_location=device)
     model.eval()
-    model.to(DEVICE)
+    model.to(device)
 
     preprocess_fn: partial = smp.encoders.get_preprocessing_fn(
         ENCODER, ENCODER_WEIGHTS
@@ -39,9 +33,6 @@ def ear_segmentation_webcam(video_capture: int = 0, record: bool = False):
 
     # Webcam acquisition
     cap = cv2.VideoCapture(video_capture)
-    # Webcam resolution
-    # cap.set(int(3),640)
-    # cap.set(int(4),480)
 
     # If Camera Device is not opened, exit the program
     if not cap.isOpened():
@@ -81,7 +72,7 @@ def ear_segmentation_webcam(video_capture: int = 0, record: bool = False):
             sample = preprocessing(image=frame_rgb_resize)
             image = sample["image"]
 
-            x_tensor = torch.from_numpy(image).to(DEVICE).unsqueeze(0)
+            x_tensor = torch.from_numpy(image).to(device).unsqueeze(0)
 
             pr_mask = model.predict(x_tensor)
             pr_mask = pr_mask.squeeze().cpu().numpy().round()
@@ -117,6 +108,3 @@ def ear_segmentation_webcam(video_capture: int = 0, record: bool = False):
         video_record_out.release()
 
     cv2.destroyAllWindows()
-
-
-ear_segmentation_webcam(video_capture=0, record=False)
