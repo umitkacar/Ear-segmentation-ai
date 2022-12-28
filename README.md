@@ -18,6 +18,7 @@
 
 <p>
 <a href="https://drive.google.com/drive/folders/1l88PrrNESBDZ4Jd3QJSG9EbIe0CjXC_j?usp=sharing"><img alt="GoogleDrive" src="https://img.shields.io/badge/GoogleDrive-4285F4?logo=GoogleDrive&logoColor=white"></a>
+<a href="https://github.com/umitkacar/Ear-segmentation-ai/releases/download/v1.0.0/earsegmentation_model_v1_46.pth"><img alt="Github" src="https://img.shields.io/badge/Github Download-181717?logo=Github&logoColor=white"></a>
 </p>
 
 ## Requirements ⚙️
