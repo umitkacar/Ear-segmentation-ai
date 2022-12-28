@@ -17,7 +17,7 @@
 ## Download Model :open_file_folder:
 
 <p>
-<a href="https://drive.google.com/drive/folders/1_M_8uuTgU__wRVbE2g2jOagLD7Eog1F8?usp=sharing"><img alt="GoogleDrive" src="https://img.shields.io/badge/GoogleDrive-4285F4?logo=GoogleDrive&logoColor=white"></a>
+<a href="https://drive.google.com/drive/folders/1l88PrrNESBDZ4Jd3QJSG9EbIe0CjXC_j?usp=sharing"><img alt="GoogleDrive" src="https://img.shields.io/badge/GoogleDrive-4285F4?logo=GoogleDrive&logoColor=white"></a>
 </p>
 
 ## Requirements ⚙️
