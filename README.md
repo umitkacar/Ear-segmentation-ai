@@ -77,7 +77,7 @@ python earsegmentationai_cli.py --mode c --device gpu
 Image Mode :art:
 
 ```properties
-python earsegmentationai_cli.py --mode m --fp /path/xxx/
+python earsegmentationai_cli.py --mode p --fp /path/xxx/
 ```
 
 ## Youtube Video :camera: :sparkles:
