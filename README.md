@@ -1,4 +1,4 @@
-# Efficient and Lightweight Ear Segmentation 
+# Efficient and Lightweight Ear Segmentation
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 <p>
@@ -24,7 +24,6 @@
 ## Requirements ⚙️
 
 * Python 3.8 to Python3.10 (Virtualenv recommended)
-* Download Ear Model file and put into `model_ear` folder
 * Optional: poetry
 * Optional: Nvidia CUDA for cuda usage
 
