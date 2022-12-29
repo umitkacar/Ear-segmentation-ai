@@ -4,17 +4,15 @@ import cv2
 import segmentation_models_pytorch as smp
 import torch
 
-from earsegmentationai.const import (
-    ENCODER,
-    ENCODER_WEIGHTS,
-    LOAD_MODEL_DEPLOY_PATH,
-)
+from earsegmentationai.const import ENCODER, ENCODER_WEIGHTS, MODEL_PATH
+from earsegmentationai.download_model import get_model
 from earsegmentationai.preprocessing import get_preprocessing
 
 
 def ear_segmentation_image(folder_path: str, device="cpu") -> None:
 
-    model = torch.load(LOAD_MODEL_DEPLOY_PATH, map_location=device)
+    get_model()
+    model = torch.load(MODEL_PATH, map_location=device)
     model.eval()
     model.to(device)
 
