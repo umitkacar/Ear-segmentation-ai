@@ -2,16 +2,16 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 <p>
-  <img alt="Python38" src="https://img.shields.io/badge/Python-3.8-3776AB.svg?logo=Python&logoColor=white"></img>
-  <img alt="Python39" src="https://img.shields.io/badge/Python-3.9-3776AB.svg?logo=Python&logoColor=white"></img>
-  <img alt="Python310" src="https://img.shields.io/badge/Python-3.10-3776AB.svg?logo=Python&logoColor=white"></img>
-  <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-v1.13.1-EE4C2C.svg?logo=PyTorch&logoColor=white"></img>
-  <img alt="Torchvision" src="https://img.shields.io/badge/Torchvision-v0.14.1-EE4C2C.svg?logo=PyTorch&logoColor=white"></img>
-  <img alt="Cuda" src="https://img.shields.io/badge/Cuda-Enabled-76B900.svg?logo=Nvidia&logoColor=white"></img>
-  <img alt="Poetry" src="https://img.shields.io/badge/Poetry-60A5FA.svg?logo=Poetry&logoColor=white"></img>
-  <img alt="Black" src="https://img.shields.io/badge/code%20style-black-black"></img>
-  <img alt="Mypy" src="https://img.shields.io/badge/mypy-checked-blue"></img>
-  <img alt="isort" src="https://img.shields.io/badge/isort-checked-yellow"></img>
+  <img alt="Python38" src="https://img.shields.io/badge/Python-3.8-3776AB.svg?logo=Python&logoColor=white"/>
+  <img alt="Python39" src="https://img.shields.io/badge/Python-3.9-3776AB.svg?logo=Python&logoColor=white"/>
+  <img alt="Python310" src="https://img.shields.io/badge/Python-3.10-3776AB.svg?logo=Python&logoColor=white"/>
+  <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-v1.13.1-EE4C2C.svg?logo=PyTorch&logoColor=white"/>
+  <img alt="Torchvision" src="https://img.shields.io/badge/Torchvision-v0.14.1-EE4C2C.svg?logo=PyTorch&logoColor=white"/>
+  <img alt="Cuda" src="https://img.shields.io/badge/Cuda-Enabled-76B900.svg?logo=Nvidia&logoColor=white"/>
+  <img alt="Poetry" src="https://img.shields.io/badge/Poetry-60A5FA.svg?logo=Poetry&logoColor=white"/> 
+  <img alt="Black" src="https://img.shields.io/badge/code%20style-black-black"/>
+  <img alt="Mypy" src="https://img.shields.io/badge/mypy-checked-blue"/>
+  <img alt="isort" src="https://img.shields.io/badge/isort-checked-yellow"/>
 </p>
 
 ## Download Model :open_file_folder:
@@ -31,20 +31,20 @@
 
 ### Pip installation :sparkles:
 
-```properties
+```bash
 pip install -r requirements.txt
 ```
 
 ### Poetry installation :sparkles:
 
-```properties
+```bash
 poetry shell
 poetry install
 ```
 
 ## Optional (If you have multiple python installation)
 
-```properties
+```bash
 poetry env use $(which python3.10)
 poetry shell
 poetry install
@@ -69,13 +69,13 @@ options:
 
 Webcam Mode :camera:
 
-```properties
+```bash
 python earsegmentationai_cli.py --mode c --device gpu
 ```
 
 Image Mode :art:
 
-```properties
+```bash
 python earsegmentationai_cli.py --mode p --fp /path/xxx/
 ```
 
