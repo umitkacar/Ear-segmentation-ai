@@ -15,28 +15,28 @@
   <img alt="isort" src="https://img.shields.io/badge/isort-checked-yellow"/>
 </p>
 
-## Download Model :open_file_folder:
+## Download Model 📂
 
 <p>
 <a href="https://drive.google.com/drive/folders/1l88PrrNESBDZ4Jd3QJSG9EbIe0CjXC_j?usp=sharing"><img alt="GoogleDrive" src="https://img.shields.io/badge/GoogleDrive-4285F4?logo=GoogleDrive&logoColor=white"></a>
 <a href="https://github.com/umitkacar/Ear-segmentation-ai/releases/download/v1.0.0/earsegmentation_model_v1_46.pth"><img alt="Github" src="https://img.shields.io/badge/Github Download-181717?logo=Github&logoColor=white"></a>
 </p>
 
-## Requirements ⚙️
+## ⚙️ Requirements ⚙️
 
 * Python 3.8 to Python3.10 (Virtualenv recommended)
 * Optional: poetry
 * Optional: Nvidia CUDA for cuda usage
 
-## :hammer_and_wrench: Installation :hammer_and_wrench:
+## 🛠️ Installation 🛠️
 
-### Pip installation :sparkles:
+### Pip installation
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Poetry installation :sparkles:
+### Poetry installation
 
 ```bash
 poetry shell
@@ -68,19 +68,21 @@ options:
                         Camera deviceId /dev/videoX for camera mode only
 ```
 
-Webcam Mode :camera:
+## Webcam Mode 📷
 
 ```bash
-python earsegmentationai_cli.py --mode c --device gpu
+python earsegmentationai_cli.py --mode c --device cpu
+python earsegmentationai_cli.py --mode c --device cuda
+python earsegmentationai_cli.py --mode c --deviceId 1 --device cuda
 ```
 
-Image Mode :art:
+## Image Mode 🖼️
 
 ```bash
 python earsegmentationai_cli.py --mode p --fp /path/xxx/
 ```
 
-## Youtube Video :camera: :sparkles:
+## Youtube Video 📸 ✨
 
 <p>
 <a href="https://www.youtube.com/watch?v=5Puxj7Q0EEo"><img alt="Youtube" src="https://img.shields.io/badge/Youtube-FF0000?logo=Youtube&logoColor=white"></a>
