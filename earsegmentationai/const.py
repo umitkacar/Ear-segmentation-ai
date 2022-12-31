@@ -4,5 +4,3 @@ MODELURL = f"{REPOURL}/releases/download/v1.0.0/{MODELNAME}"
 MODEL_PATH = f"./earsegmentationai/model_ear/{MODELNAME}"
 ENCODER = "resnet18"
 ENCODER_WEIGHTS = "imagenet"
-CLASSES = ["ear"]
-ACTIVATION = "sigmoid"

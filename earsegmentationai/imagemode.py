@@ -3,10 +3,12 @@ from glob import glob
 import cv2
 import segmentation_models_pytorch as smp
 import torch
+from cv2 import Mat
 
-from earsegmentationai.const import ENCODER, ENCODER_WEIGHTS, MODEL_PATH
-from earsegmentationai.download_model import get_model
-from earsegmentationai.preprocessing import get_preprocessing
+from .const import ENCODER, ENCODER_WEIGHTS, MODEL_PATH
+from .download_model import get_model
+from .predict_mask import get_prediction
+from .preprocessing import get_preprocessing
 
 
 def ear_segmentation_image(folder_path: str, device="cpu") -> None:
@@ -22,7 +24,7 @@ def ear_segmentation_image(folder_path: str, device="cpu") -> None:
     preprocessing = get_preprocessing(preprocessing_fn)
 
     # JPEG/PNG/JPG
-    data_samples = (
+    data_samples: list[str] = (
         glob(folder_path + "/*.jpg")
         + glob(folder_path + "/*.jpeg")
         + glob(folder_path + "/*.png")
@@ -30,22 +32,20 @@ def ear_segmentation_image(folder_path: str, device="cpu") -> None:
 
     for path in data_samples:
 
-        img = cv2.imread(path)
-        img = cv2.resize(img, (480, 320))
-        h, w = img.shape[:2]
-        image = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        img: Mat = cv2.imread(path)
+        cv2.resize(img, (480, 320))
+        image: Mat = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
         with torch.no_grad():
 
-            sample = preprocessing(image=image)
-            image = sample["image"]
+            predict_mask = get_prediction(
+                preprocessing=preprocessing,
+                image=image,
+                device=device,
+                model=model,
+            )
 
-            x_tensor = torch.from_numpy(image).to(device).unsqueeze(0)
-
-            pr_mask = model.predict(x_tensor)
-            pr_mask = pr_mask.squeeze().cpu().numpy().round()
-
-        cv2.imshow("Ear Mask", pr_mask)
+        cv2.imshow("Ear Mask", predict_mask)
         cv2.imshow("Ear Image", img)
         cv2.waitKey(0)
 

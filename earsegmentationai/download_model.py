@@ -7,7 +7,7 @@ import requests
 from requests import Response
 from tqdm.auto import tqdm
 
-from earsegmentationai.const import MODEL_PATH, MODELURL
+from .const import MODEL_PATH, MODELURL
 
 
 def get_model() -> None:

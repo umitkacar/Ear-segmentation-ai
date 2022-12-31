@@ -6,10 +6,12 @@ import imgviz
 import numpy as np
 import segmentation_models_pytorch as smp
 import torch
+from segmentation_models_pytorch.decoders.unet.model import Unet
 
-from earsegmentationai.const import ENCODER, ENCODER_WEIGHTS, MODEL_PATH
-from earsegmentationai.download_model import get_model
-from earsegmentationai.preprocessing import get_preprocessing
+from .const import ENCODER, ENCODER_WEIGHTS, MODEL_PATH
+from .download_model import get_model
+from .predict_mask import get_prediction
+from .preprocessing import get_preprocessing
 
 
 def ear_segmentation_webcam(
@@ -17,19 +19,19 @@ def ear_segmentation_webcam(
 ):
     get_model()
     return_frame_status: bool = True
-    video_record_out: Optional[Any] = None
+    video_record_out: Optional[cv2.VideoWriter] = None
 
-    model = torch.load(MODEL_PATH, map_location=device)
+    model: Unet = torch.load(MODEL_PATH, map_location=device)
     model.eval()
     model.to(device)
 
-    preprocess_fn: partial = smp.encoders.get_preprocessing_fn(
+    preprocess_fn: partial[Any] = smp.encoders.get_preprocessing_fn(
         ENCODER, ENCODER_WEIGHTS
     )
     preprocessing = get_preprocessing(preprocess_fn)
 
     # Webcam acquisition
-    cap = cv2.VideoCapture(video_capture)
+    cap: cv2.VideoCapture = cv2.VideoCapture(video_capture)
 
     # If Camera Device is not opened, exit the program
     if not cap.isOpened():
@@ -53,6 +55,7 @@ def ear_segmentation_webcam(
             (640, 480),
         )
 
+    print("Press Q to exit from camera")
     while return_frame_status is True:
 
         return_frame_status, camera_frame_bgr = cap.read()
@@ -63,19 +66,16 @@ def ear_segmentation_webcam(
 
         with torch.no_grad():
 
-            # tensor_img = my_transforms(image=image)['image'].unsqueeze(0)
-            # predictions = model.forward(tensor_img.to(DEVICE))
-
-            sample = preprocessing(image=frame_rgb_resize)
-            image = sample["image"]
-
-            x_tensor = torch.from_numpy(image).to(device).unsqueeze(0)
-
-            pr_mask = model.predict(x_tensor)
-            pr_mask = pr_mask.squeeze().cpu().numpy().round()
-
             pr_mask_orj = cv2.resize(
-                pr_mask, (frame_rgb.shape[1], frame_rgb.shape[0])
+                cv2.Mat(
+                    get_prediction(
+                        preprocessing=preprocessing,
+                        image=frame_rgb_resize,
+                        device=device,
+                        model=model,
+                    )
+                ),
+                (frame_rgb.shape[1], frame_rgb.shape[0]),
             )
 
             # colorize label image
@@ -83,8 +83,8 @@ def ear_segmentation_webcam(
             labelviz: np.ndarray = imgviz.label2rgb(
                 class_label,
                 image=frame_rgb,
-                label_names=["background", "ear"],
-                font_size=30,
+                label_names=["bg", "ear"],
+                font_size=25,
                 loc="rb",
             )
 
