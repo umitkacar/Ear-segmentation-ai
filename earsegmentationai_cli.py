@@ -45,7 +45,7 @@ def main():
 
     if args.mode == "c":
         if args.deviceId is not None:
-            camera_mode.ear_segmentation_webcam(
+            camera_mode.ear_segmentation_camera(
                 video_capture=args.deviceId, record=False, device=args.device
             )
     elif args.mode == "p":
