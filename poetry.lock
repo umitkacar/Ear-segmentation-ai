@@ -1352,6 +1352,32 @@ dev = ["build (>=0.7.0)", "pytest (>=7.0.1)", "pytest-timeout (>=2.1.0)"]
 doc = ["pytoolconfig[doc]", "sphinx (>=4.5.0)", "sphinx-autodoc-typehints (>=1.18.1)", "sphinx-rtd-theme (>=1.0.0)"]
 
 [[package]]
+name = "ruff"
+version = "0.0.203"
+description = "An extremely fast Python linter, written in Rust."
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "ruff-0.0.203-py3-none-macosx_10_7_x86_64.whl", hash = "sha256:9b384572e1650c75e91b282b54c583db1ba38a8035d77279d01e7f86d74360c2"},
+    {file = "ruff-0.0.203-py3-none-macosx_10_9_x86_64.macosx_11_0_arm64.macosx_10_9_universal2.whl", hash = "sha256:98a6589ef368418474cc90bc006524ab44d667a4d7f8188218db727cdf23028f"},
+    {file = "ruff-0.0.203-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:d98628e6cbd98089876c62796381f24db1607a40f238976be88d2b91ff4fb9cb"},
+    {file = "ruff-0.0.203-py3-none-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:d6a651476fff3d4eafbf9c375d1d7776cd8a3ee3aebf691e3645c30e3dc30aa5"},
+    {file = "ruff-0.0.203-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:9bd17fcea65560dd0ce1e213ef9d00c328f98b3b96902d010e04c32ed66931a6"},
+    {file = "ruff-0.0.203-py3-none-manylinux_2_17_ppc64.manylinux2014_ppc64.whl", hash = "sha256:b94b1ecd13dee7ef2104a907e1a8bc52dcfa012690144cd9d8d08df060b06f7c"},
+    {file = "ruff-0.0.203-py3-none-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:af7e4e208dabc659057c4fe3341f24f683fb1708352b17650e8a9355e8be5a60"},
+    {file = "ruff-0.0.203-py3-none-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:f594cef2aa08584488c53f69bee7aa2930c0b218456c102e125f869a57bfe4d4"},
+    {file = "ruff-0.0.203-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:3b885b810bf4e2d6e4b4cd0c1044b270f4070c40a7d619e7fe21de4c9d20891a"},
+    {file = "ruff-0.0.203-py3-none-musllinux_1_2_aarch64.whl", hash = "sha256:3bf8847c4fa6d863fbc769162d621acde2aa21426543c51cbf21b63fe542c791"},
+    {file = "ruff-0.0.203-py3-none-musllinux_1_2_armv7l.whl", hash = "sha256:031bb5e1f76216a5b606c1fbc53a0223933f85ffbda9ab94536b2266fc858726"},
+    {file = "ruff-0.0.203-py3-none-musllinux_1_2_i686.whl", hash = "sha256:c92f90aa488dae8157d5dcf624be02be2d3db9d9e335ff7c93b9eaaa4565c280"},
+    {file = "ruff-0.0.203-py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:f8c4658bc908a4aca9189e1c6fde72f6d6097d199f8d1d0f4f1a0aaa752802d9"},
+    {file = "ruff-0.0.203-py3-none-win32.whl", hash = "sha256:92f755c703d0833fef1fbf6afc1fcf66d2fedb3a2705787b7f7c421d80eb84c0"},
+    {file = "ruff-0.0.203-py3-none-win_amd64.whl", hash = "sha256:d866367f0b49a0bef84df7cf8ccdc97133923f39941103cda5320e9063108274"},
+    {file = "ruff-0.0.203.tar.gz", hash = "sha256:9d442bba26e81c1c3cb33b2af08071fcf41f023edb06478dbe402189a0614661"},
+]
+
+[[package]]
 name = "scikit-image"
 version = "0.19.3"
 description = "Image processing in Python"
@@ -1830,4 +1856,4 @@ test = ["pytest (>=3.0.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "43aa3d93cc5516a8803ffd11bda9ffe8839bc1a989ab1a3033a0fc39769ee21a"
+content-hash = "aeaf4d7b9ac112a2f5df3088eb235d2523150c6ff36416786c07a9b53a9a37db"
