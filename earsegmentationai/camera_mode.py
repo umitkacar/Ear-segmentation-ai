@@ -22,39 +22,23 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 """
-
-from functools import partial
-from typing import Any, Optional
+from typing import Optional
 
 import cv2
 import imgviz
 import numpy as np
-import segmentation_models_pytorch as smp
 import torch
-from segmentation_models_pytorch.decoders.unet.model import Unet
 
-from earsegmentationai import ENCODER, ENCODER_WEIGHTS, MODEL_PATH
-
-from .download_model import get_model
-from .pre_processing import get_preprocessing
-from .predict_mask import get_prediction
+from earsegmentationai.ear_models import EarModel
 
 
-def ear_segmentation_webcam(
+def ear_segmentation_camera(
     video_capture: int = 0, record: bool = False, device="cpu"
 ):
-    get_model()
+    ear_model = EarModel(device=device)
+
     return_frame_status: bool = True
     video_record_out: Optional[cv2.VideoWriter] = None
-
-    model: Unet = torch.load(MODEL_PATH, map_location=device)
-    model.eval()
-    model.to(device)
-
-    preprocess_fn: partial[Any] = smp.encoders.get_preprocessing_fn(
-        ENCODER, ENCODER_WEIGHTS
-    )
-    preprocessing = get_preprocessing(preprocess_fn)
 
     # Webcam acquisition
     cap: cv2.VideoCapture = cv2.VideoCapture(video_capture)
@@ -93,14 +77,7 @@ def ear_segmentation_webcam(
         with torch.no_grad():
 
             pr_mask_orj = cv2.resize(
-                cv2.Mat(
-                    get_prediction(
-                        preprocessing=preprocessing,
-                        image=frame_rgb_resize,
-                        device=device,
-                        model=model,
-                    )
-                ),
+                cv2.Mat(ear_model.get_prediction(image=frame_rgb_resize)),
                 (frame_rgb.shape[1], frame_rgb.shape[0]),
             )
 

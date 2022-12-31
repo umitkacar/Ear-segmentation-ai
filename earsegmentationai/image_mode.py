@@ -25,29 +25,22 @@ SOFTWARE.
 
 from glob import glob
 
-import cv2
-import segmentation_models_pytorch as smp
-import torch
-from cv2 import Mat
+from cv2 import COLOR_BGR2RGB
+from cv2 import Mat as cv_Mat
+from cv2 import cvtColor
+from cv2 import destroyAllWindows as cv_destroyAllWindows
+from cv2 import imread as cv_imread
+from cv2 import imshow as cv_imshow
+from cv2 import resize as cv_resize
+from cv2 import waitKey as cv_waitKey
+from torch.autograd.grad_mode import no_grad
 
-from earsegmentationai import ENCODER, ENCODER_WEIGHTS, MODEL_PATH
-
-from .download_model import get_model
-from .pre_processing import get_preprocessing
-from .predict_mask import get_prediction
+from earsegmentationai.ear_models import EarModel
 
 
 def ear_segmentation_image(folder_path: str, device="cpu") -> None:
 
-    get_model()
-    model = torch.load(MODEL_PATH, map_location=device)
-    model.eval()
-    model.to(device)
-
-    preprocessing_fn = smp.encoders.get_preprocessing_fn(
-        ENCODER, ENCODER_WEIGHTS
-    )
-    preprocessing = get_preprocessing(preprocessing_fn)
+    ear_model = EarModel(device=device)
 
     # JPEG/PNG/JPG
     data_samples: list[str] = (
@@ -58,21 +51,16 @@ def ear_segmentation_image(folder_path: str, device="cpu") -> None:
 
     for path in data_samples:
 
-        img: Mat = cv2.imread(path)
-        cv2.resize(img, (480, 320))
-        image: Mat = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        img: cv_Mat = cv_imread(path)
+        cv_resize(img, (480, 320))
+        image: cv_Mat = cvtColor(img, COLOR_BGR2RGB)
 
-        with torch.no_grad():
+        with no_grad():
 
-            predict_mask = get_prediction(
-                preprocessing=preprocessing,
-                image=image,
-                device=device,
-                model=model,
-            )
+            predict_mask = ear_model.get_prediction(image=image)
 
-        cv2.imshow("Ear Mask", predict_mask)
-        cv2.imshow("Ear Image", img)
-        cv2.waitKey(0)
+        cv_imshow("Ear Mask", predict_mask)
+        cv_imshow("Ear Image", img)
+        cv_waitKey(0)
 
-    cv2.destroyAllWindows()
+    cv_destroyAllWindows()
