@@ -7,8 +7,8 @@ from cv2 import Mat
 
 from .const import ENCODER, ENCODER_WEIGHTS, MODEL_PATH
 from .download_model import get_model
+from .pre_processing import get_preprocessing
 from .predict_mask import get_prediction
-from .preprocessing import get_preprocessing
 
 
 def ear_segmentation_image(folder_path: str, device="cpu") -> None:
