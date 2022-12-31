@@ -1,7 +1,7 @@
 import argparse
 from sys import exit
 
-from earsegmentationai import cameramode, imagemode
+from earsegmentationai import camera_mode, image_mode
 
 
 def main():
@@ -45,13 +45,13 @@ def main():
 
     if args.mode == "c":
         if args.deviceId is not None:
-            cameramode.ear_segmentation_webcam(
+            camera_mode.ear_segmentation_webcam(
                 video_capture=args.deviceId, record=False, device=args.device
             )
     elif args.mode == "p":
         if args.folderpath is not None:
             print(args.folderpath)
-            imagemode.ear_segmentation_image(
+            image_mode.ear_segmentation_image(
                 folder_path=args.folderpath, device=args.device
             )
         else:
