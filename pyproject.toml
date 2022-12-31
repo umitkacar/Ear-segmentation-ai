@@ -1,8 +1,12 @@
 [tool.poetry]
 name = "earsegmentationai"
-version = "1.0.0"
-description = "Pytorch based Ear Detection in picture and camera"
+version = "1.0.2"
+description = "Pytorch Based - Efficient and Lightweight Ear Segmentation"
 authors = ["Umit KACAR <umitkacar.phd@gmail.com>","Onuralp SEZER <thunderbirdtr@gmail.com>"]
+maintainers = [
+    "Umit KACAR <umitkacar.phd@gmail.com>",
+    "Onuralp SEZER <thunderbirdtr@gmail.com>",
+]
 readme = "README.md"
 packages = [{include = "earsegmentationai"}]
 homepage = "https://github.com/umitkacar/Ear-segmentation-ai"
@@ -22,7 +26,7 @@ classifiers = [
 
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = ">=3.8,<3.11"
 poethepoet = "^0.17.1"
 numpy = "1.24.1"
 pillow = "9.3.0"
@@ -85,4 +89,4 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-obserware = "earsegmentationai.main:main"
+earsegmentationai = "earsegmentationai.main:main"
