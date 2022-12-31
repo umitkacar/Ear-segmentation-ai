@@ -25,6 +25,7 @@
 ## ⚙️ Requirements ⚙️
 
 * Python 3.8 to Python3.10 (Virtualenv recommended)
+* Display Server for showing results
 * Optional: poetry
 * Optional: Nvidia CUDA for cuda usage
 
