@@ -8,7 +8,8 @@ import segmentation_models_pytorch as smp
 import torch
 from segmentation_models_pytorch.decoders.unet.model import Unet
 
-from .const import ENCODER, ENCODER_WEIGHTS, MODEL_PATH
+from earsegmentationai import ENCODER, ENCODER_WEIGHTS, MODEL_PATH
+
 from .download_model import get_model
 from .pre_processing import get_preprocessing
 from .predict_mask import get_prediction

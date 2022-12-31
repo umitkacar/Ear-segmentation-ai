@@ -1,14 +1,6 @@
 from typing import List
 
-from albumentations import Compose, Lambda, Resize
-
-
-def get_validation_augmentation():
-    """Add paddings to make image shape divisible by 32"""
-    test_transform = [
-        Resize(height=320, width=480, always_apply=True),
-    ]
-    return Compose(test_transform)
+from albumentations import Compose, Lambda
 
 
 def to_tensor(x, **kwargs):
