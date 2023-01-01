@@ -2,6 +2,13 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/umitkacar/Ear-segmentation-ai/main.svg)](https://results.pre-commit.ci/latest/github/umitkacar/Ear-segmentation-ai/main)
+![PyPI](https://img.shields.io/pypi/v/earsegmentationai)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/earsegmentationai?color=red)
+![PyPI - Format](https://img.shields.io/pypi/format/earsegmentationai)
+![PyPI - Status](https://img.shields.io/pypi/status/earsegmentationai?color=orange)
+![PyPI - Implementation](https://img.shields.io/pypi/implementation/earsegmentationai)
+![PyPI - Wheel](https://img.shields.io/pypi/wheel/earsegmentationai)
+
 <p>
   <img alt="Python38" src="https://img.shields.io/badge/Python-3.8-3776AB.svg?logo=Python&logoColor=white"/>
   <img alt="Python39" src="https://img.shields.io/badge/Python-3.9-3776AB.svg?logo=Python&logoColor=white"/>
