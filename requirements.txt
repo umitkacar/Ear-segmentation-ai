@@ -10,7 +10,7 @@ coverage==7.0.1
 cycler==0.11.0
 debugpy==1.6.4
 distlib==0.3.6
--e git+ssh://git@github.com/umitkacar/Ear-segmentation-ai.git@05a86ed8ceac1580960426559928e437e5e6a51b#egg=earsegmentationai
+-e git+ssh://git@github.com/umitkacar/Ear-segmentation-ai.git@9c8eb0b08c4164976a20fb5afc3fa2fc2abf1df0#egg=earsegmentationai
 efficientnet-pytorch==0.7.1
 filelock==3.9.0
 fonttools==4.38.0
@@ -53,7 +53,7 @@ PyYAML==6.0
 qudida==0.0.4
 requests==2.28.1
 rope==1.6.0
-ruff==0.0.203
+ruff==0.0.205
 scikit-image==0.19.3
 scikit-learn==1.2.0
 scipy==1.9.3

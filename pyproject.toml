@@ -52,7 +52,7 @@ coverage = "^7.0.1"
 pre-commit = "^2.21.0"
 pyupgrade = "^3.3.1"
 types-requests = "^2.28.11.7"
-ruff = "^0.0.203"
+ruff = "^0.0.205"
 
 
 [tool.poe.tasks]
