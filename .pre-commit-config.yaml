@@ -19,7 +19,7 @@ repos:
         - --py3-plus
         - --keep-runtime-typing
 -   repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.0.205
+    rev: v0.0.206
     hooks:
     -   id: ruff
         args:
@@ -41,4 +41,4 @@ repos:
     -   id: black
 ci:
     autofix_commit_msg: 🎨 [pre-commit.ci] Auto format from pre-commit.com hooks
-    autoupdate_commit_msg: ⬆ [pre-commit.ci] pre-commit autoupdate
+    autoupdate_commit_msg: "ci(pre-commit.ci): ⬆ pre-commit autoupdate"
