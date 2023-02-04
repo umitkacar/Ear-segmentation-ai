@@ -27,11 +27,15 @@ SOFTWARE.
 import argparse
 from sys import exit
 
-from earsegmentationai import camera_mode, image_mode
+from earsegmentationai import __version__, camera_mode, image_mode
 
 
 def main():
     parser = argparse.ArgumentParser()
+
+    parser.add_argument(
+        "--version", action="version", version=f"%(prog)s {__version__}"
+    )
 
     parser.add_argument(
         "-m",
@@ -80,9 +84,9 @@ def main():
             image_mode.ear_segmentation_image(
                 folder_path=args.folderpath, device=args.device
             )
-        else:
-            print("Folder path required")
-            exit()
+    else:
+        print("Folder path required")
+        exit()
 
 
 if __name__ == "__main__":
