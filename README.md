@@ -16,6 +16,7 @@
   <img alt="Python310" src="https://img.shields.io/badge/Python-3.10-3776AB.svg?logo=Python&logoColor=white"/>
   <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-v1.13.1-EE4C2C.svg?logo=PyTorch&logoColor=white"/>
   <img alt="Torchvision" src="https://img.shields.io/badge/Torchvision-v0.14.1-EE4C2C.svg?logo=PyTorch&logoColor=white"/>
+  <img alt="Torchvision" src="https://img.shields.io/badge/segmentationModelsPytorch-v0.3.2-EE4C2C.svg?logo=PyTorch&logoColor=white"/>
   <img alt="Cuda" src="https://img.shields.io/badge/Cuda-Enabled-76B900.svg?logo=Nvidia&logoColor=white"/>
   <img alt="Poetry" src="https://img.shields.io/badge/Poetry-60A5FA.svg?logo=Poetry&logoColor=white"/>
   <img alt="Black" src="https://img.shields.io/badge/code%20style-black-black"/>
@@ -63,7 +64,7 @@ poetry install
 ## Usage
 
 ```
-usage: earsegmentationai_cli.py [-h] -m {c,p} [-d [{cpu,cuda}]] [-fp FOLDERPATH] [-id [DEVICEID]]
+usage: earsegmentationai [-h] -m {c,p} [-d [{cpu,cuda}]] [-fp FOLDERPATH] [-id [DEVICEID]]
 
 options:
   -h, --help            show this help message and exit
@@ -80,15 +81,15 @@ options:
 ## Webcam Mode 📷
 
 ```bash
-python earsegmentationai_cli.py --mode c --device cpu
-python earsegmentationai_cli.py --mode c --device cuda
-python earsegmentationai_cli.py --mode c --deviceId 1 --device cuda
+earsegmentationai --mode c --device cpu
+earsegmentationai --mode c --device cuda
+earsegmentationai --mode c --deviceId 1 --device cuda
 ```
 
 ## Image Mode 🖼️
 
 ```bash
-python earsegmentationai_cli.py --mode p --fp /path/xxx/
+earsegmentationai --mode p --fp /path/xxx/
 ```
 
 ## Youtube Video 📸 ✨
