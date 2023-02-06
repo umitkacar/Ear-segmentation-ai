@@ -57,7 +57,6 @@ class EarModel:
         self.model: Unet = self.get_model()
 
     def get_model(self) -> Unet:
-
         if path.exists(MODEL_PATH):
             return self.load_model()
 
