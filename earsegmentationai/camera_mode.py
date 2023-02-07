@@ -67,7 +67,6 @@ def ear_segmentation_camera(
 
     print("Press Q to exit from camera")
     while return_frame_status is True:
-
         return_frame_status, camera_frame_bgr = cap.read()
         # frame = cv2.flip(cv2.transpose(frame), flipCode=1)
 
@@ -75,7 +74,6 @@ def ear_segmentation_camera(
         frame_rgb_resize = cv2.resize(frame_rgb, (480, 320))
 
         with torch.no_grad():
-
             pr_mask_orj = cv2.resize(
                 cv2.Mat(ear_model.get_prediction(image=frame_rgb_resize)),
                 (frame_rgb.shape[1], frame_rgb.shape[0]),
