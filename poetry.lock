@@ -616,13 +616,13 @@ tifffile = ["tifffile"]
 
 [[package]]
 name = "imgviz"
-version = "1.6.2"
+version = "1.7.0"
 description = "Image Visualization Tools"
 category = "main"
 optional = false
 python-versions = "*"
 files = [
-    {file = "imgviz-1.6.2.tar.gz", hash = "sha256:c279e0d2a5fae41ab69f5d0fdc1c390a717b29806991b6cad2b675d00c42230b"},
+    {file = "imgviz-1.7.0.tar.gz", hash = "sha256:56efa9676717ec205731e9a5ef4f47031d7b2439bc6a974510cba5289b8abe67"},
 ]
 
 [package.dependencies]
