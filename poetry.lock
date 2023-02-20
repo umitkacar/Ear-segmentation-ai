@@ -525,14 +525,14 @@ gitdb = ">=4.0.1,<5"
 
 [[package]]
 name = "huggingface-hub"
-version = "0.12.0"
+version = "0.12.1"
 description = "Client library to download and publish models, datasets and other repos on the huggingface.co hub"
 category = "main"
 optional = false
 python-versions = ">=3.7.0"
 files = [
-    {file = "huggingface_hub-0.12.0-py3-none-any.whl", hash = "sha256:93809eabbfb2058a808bddf8b2a70f645de3f9df73ce87ddf5163d4c74b71c0c"},
-    {file = "huggingface_hub-0.12.0.tar.gz", hash = "sha256:da82c9ec8f9d8f976ffd3fd8249d20bb35c2dd3145a9f7ca1106f0ebefd9afa0"},
+    {file = "huggingface_hub-0.12.1-py3-none-any.whl", hash = "sha256:867586cc8543fe1bd43a219fedbea7d71690021ad80f0c46f35c4751069278d7"},
+    {file = "huggingface_hub-0.12.1.tar.gz", hash = "sha256:6f960f6246ef9c3446d0d6275e853485515682c350917fdaf2a59705f8b9ebb3"},
 ]
 
 [package.dependencies]
@@ -622,6 +622,7 @@ category = "main"
 optional = false
 python-versions = "*"
 files = [
+    {file = "imgviz-1.7.0-py3-none-any.whl", hash = "sha256:ecfed0b9df443c4f660dd7882e493b7c7821bd2ac6889f1b03759c9a3ca782fb"},
     {file = "imgviz-1.7.0.tar.gz", hash = "sha256:56efa9676717ec205731e9a5ef4f47031d7b2439bc6a974510cba5289b8abe67"},
 ]
 
