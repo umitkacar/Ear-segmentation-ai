@@ -23,71 +23,52 @@ SOFTWARE.
 
 """
 
+from os import path
 
-import argparse
-from sys import exit
+import typer
 
-from earsegmentationai import __version__, camera_mode, image_mode
+from earsegmentationai import (
+    __copyright__,
+    __version__,
+    camera_mode,
+    image_mode,
+)
+
+app = typer.Typer()
 
 
-def main():
-    parser = argparse.ArgumentParser()
+@app.command()
+def version():
+    print(f"Ear Segmentation Ai - {__version__}")
+    print(__copyright__)
 
-    parser.add_argument(
-        "--version", action="version", version=f"%(prog)s {__version__}"
+
+@app.command()
+def video_capture(
+    deviceId: int = typer.Option(1), device: str = typer.Option("cuda:0")
+) -> None:
+    if deviceId < 0:
+        print("Device cannot be lower than 0")
+        return
+
+    camera_mode.ear_segmentation_camera(
+        video_capture=deviceId, record=False, device=device
     )
+    return
 
-    parser.add_argument(
-        "-m",
-        "--mode",
-        choices=["c", "p"],
-        help="Select camera or picture mode",
-        required=True,
-    )
 
-    parser.add_argument(
-        "-d",
-        "--device",
-        nargs="?",
-        default="cpu",
-        choices=["cpu", "cuda"],
-        help="Run in gpu or cpu mode",
-        type=str,
-    )
+@app.command()
+def picture_capture(folderPath: str = "", device: str = "cuda:0") -> None:
+    if path.isfile(folderPath) is False:
+        print("Please use valid file path")
+        return
 
-    parser.add_argument(
-        "-fp",
-        "--folderpath",
-        help="Folder path for image(s) for image mode only",
-    )
-
-    parser.add_argument(
-        "-id",
-        "--deviceId",
-        nargs="?",
-        default=1,
-        help="Camera deviceId /dev/videoX for camera mode only",
-        type=int,
-    )
-
-    # Read arguments from command line
-    args = parser.parse_args()
-
-    if args.mode == "c":
-        if args.deviceId is not None:
-            camera_mode.ear_segmentation_camera(
-                video_capture=args.deviceId, record=False, device=args.device
-            )
-    elif args.mode == "p":
-        if args.folderpath is not None:
-            print(args.folderpath)
-            image_mode.ear_segmentation_image(
-                folder_path=args.folderpath, device=args.device
-            )
-    else:
-        print("Folder path required")
-        exit()
+    if folderPath.lower().endswith((".png", ".jpg", ".jpeg")) is False:
+        print("Please use valid file extension")
+        return
+    image_mode.ear_segmentation_image(folder_path=folderPath, device=device)
+    return
 
 
 if __name__ == "__main__":
-    main()
+    app()
