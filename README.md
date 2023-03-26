@@ -11,6 +11,10 @@
 [![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v1.json)](https://github.com/charliermarsh/ruff)
 
+
+[![main-ci](https://github.com/umitkacar/Ear-segmentation-ai/actions/workflows/main.yml/badge.svg)](https://github.com/umitkacar/Ear-segmentation-ai/actions/workflows/main.yml)
+[![Release to PyPi](https://github.com/umitkacar/Ear-segmentation-ai/actions/workflows/release_to_pypi.yml/badge.svg)](https://github.com/umitkacar/Ear-segmentation-ai/actions/workflows/release_to_pypi.yml)
+
 <p>
   <img alt="Python38" src="https://img.shields.io/badge/Python-3.8-3776AB.svg?logo=Python&logoColor=white"/>
   <img alt="Python39" src="https://img.shields.io/badge/Python-3.9-3776AB.svg?logo=Python&logoColor=white"/>
