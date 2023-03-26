@@ -5,3 +5,6 @@ MODEL_PATH = f"./earsegmentationai/model_ear/{MODELNAME}"
 ENCODER = "resnet18"
 ENCODER_WEIGHTS = "imagenet"
 __version__ = "1.0.2"
+__copyright__ = (
+    "Copyright 2023, The Efficient and Lightweight Ear Segmentation Project"
+)
