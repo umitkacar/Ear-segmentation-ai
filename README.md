@@ -18,6 +18,7 @@
   <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-v1.13.1-EE4C2C.svg?logo=PyTorch&logoColor=white"/>
   <img alt="Torchvision" src="https://img.shields.io/badge/Torchvision-v0.14.1-EE4C2C.svg?logo=PyTorch&logoColor=white"/>
   <img alt="Torchvision" src="https://img.shields.io/badge/segmentationModelsPytorch-v0.3.2-EE4C2C.svg?logo=PyTorch&logoColor=white"/>
+  <img alt="OpenCV" src="https://img.shields.io/badge/OpenCV-4.7.0-5C3EE8?logo=OpenCV&logoColor=white"/>
   <img alt="Cuda" src="https://img.shields.io/badge/Cuda-Enabled-76B900.svg?logo=Nvidia&logoColor=white"/>
   <img alt="Poetry" src="https://img.shields.io/badge/Poetry-60A5FA.svg?logo=Poetry&logoColor=white"/>
   <img alt="Black" src="https://img.shields.io/badge/code%20style-black-black"/>
