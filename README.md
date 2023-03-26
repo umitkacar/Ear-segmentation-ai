@@ -64,33 +64,34 @@ poetry install
 
 ## Usage
 
-```
-usage: earsegmentationai [-h] -m {c,p} [-d [{cpu,cuda}]] [-fp FOLDERPATH] [-id [DEVICEID]]
+```bash
+earsegmentationai --help
+ Usage: earsegmentationai [OPTIONS] COMMAND [ARGS]...
 
-options:
-  -h, --help            show this help message and exit
-  -m {c,p}, --mode {c,p}
-                        Select camera or picture mode
-  -d [{cpu,cuda}], --device [{cpu,cuda}]
-                        Run in gpu or cpu mode
-  -fp FOLDERPATH, --folderpath FOLDERPATH
-                        Folder path for image(s) for image mode only
-  -id [DEVICEID], --deviceId [DEVICEID]
-                        Camera deviceId /dev/videoX for camera mode only
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --install-completion          Install completion for the current shell.                                          │
+│ --show-completion             Show completion for the current shell, to copy it or customize the installation.   │
+│ --help                        Show this message and exit.                                                        │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ───────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ picture-capture                                                                                                  │
+│ version                                                                                                          │
+│ video-capture                                                                                                    │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 
 ## Webcam Mode 📷
 
 ```bash
-earsegmentationai --mode c --device cpu
-earsegmentationai --mode c --device cuda
-earsegmentationai --mode c --deviceId 1 --device cuda
+python -m earsegmentationai.main webcam-capture --deviceid 1 --device "cpu"
+python -m earsegmentationai.main webcam-capture --deviceid 1 --device "cuda:0"
 ```
 
 ## Image Mode 🖼️
 
 ```bash
-earsegmentationai --mode p --fp /path/xxx/
+python -m earsegmentationai.main picture-capture --folderpath "/path/filename.png" --device "cpu"
+python -m earsegmentationai.main picture-capture --folderpath "/path/filename.png" --device "cuda:0"
 ```
 
 ## Youtube Video 📸 ✨
