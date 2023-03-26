@@ -44,7 +44,7 @@ def version():
 
 
 @app.command()
-def video_capture(
+def webcam_picture(
     deviceId: int = typer.Option(1), device: str = typer.Option("cuda:0")
 ) -> None:
     if deviceId < 0:
