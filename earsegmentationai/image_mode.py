@@ -39,7 +39,6 @@ from earsegmentationai.ear_models import EarModel
 
 
 def ear_segmentation_image(folder_path: str, device="cpu") -> None:
-
     ear_model = EarModel(device=device)
 
     # JPEG/PNG/JPG
@@ -50,13 +49,11 @@ def ear_segmentation_image(folder_path: str, device="cpu") -> None:
     )
 
     for path in data_samples:
-
         img: cv_Mat = cv_imread(path)
         cv_resize(img, (480, 320))
         image: cv_Mat = cvtColor(img, COLOR_BGR2RGB)
 
         with no_grad():
-
             predict_mask = ear_model.get_prediction(image=image)
 
         cv_imshow("Ear Mask", predict_mask)
