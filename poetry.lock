@@ -669,13 +669,12 @@ tifffile = ["tifffile"]
 
 [[package]]
 name = "imgviz"
-version = "1.7.4"
+version = "1.7.5"
 description = "Image Visualization Tools"
 optional = false
 python-versions = ">=3.5"
 files = [
-    {file = "imgviz-1.7.4-py3-none-any.whl", hash = "sha256:b9812212f310cc03cebfd1a2fc71ad82983076a9a3c7ec8b3039aaed2adc7d88"},
-    {file = "imgviz-1.7.4.tar.gz", hash = "sha256:7021ab140598650af00a5d856f3084d05d8cfdb1c0c57259be35084f9b25a6c7"},
+    {file = "imgviz-1.7.5.tar.gz", hash = "sha256:dad88868aa450deb105e08c389d3cc7ffd4f62cc7bc30885e33ce38ba2919a89"},
 ]
 
 [package.dependencies]
