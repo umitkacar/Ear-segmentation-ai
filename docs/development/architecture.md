@@ -98,7 +98,7 @@ Used in ModelManager to ensure single model instance:
 class ModelManager:
     _instance = None
     _model = None
-    
+
     def __new__(cls):
         if cls._instance is None:
             cls._instance = super().__new__(cls)

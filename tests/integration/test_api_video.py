@@ -1,8 +1,9 @@
 """Integration tests for video processing API."""
 
+from unittest.mock import Mock, patch
+
 import numpy as np
 import pytest
-from unittest.mock import Mock, patch
 
 from earsegmentationai.api.video import VideoProcessor
 

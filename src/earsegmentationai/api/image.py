@@ -375,8 +375,9 @@ class ImageProcessor(BaseProcessor):
         Returns:
             Processing result
         """
-        import requests
         from io import BytesIO
+
+        import requests
 
         try:
             # Download image

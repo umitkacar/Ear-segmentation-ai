@@ -1,7 +1,8 @@
 """Unit tests for model module."""
 
-import pytest
 from unittest.mock import Mock, patch
+
+import pytest
 import torch
 
 from earsegmentationai.core.model import ModelManager

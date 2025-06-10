@@ -3,8 +3,8 @@
 import numpy as np
 import pytest
 
+from earsegmentationai.api.base import BatchProcessingResult, ProcessingResult
 from earsegmentationai.api.image import ImageProcessor
-from earsegmentationai.api.base import ProcessingResult, BatchProcessingResult
 
 
 class TestImageProcessorIntegration:

@@ -49,7 +49,7 @@ class TestCLIIntegration:
 
         # Note: This would actually download the model in real test
         # For unit test, we should mock the download
-        from unittest.mock import patch, Mock
+        from unittest.mock import Mock, patch
 
         mock_manager = Mock()
         mock_manager.config.model_path = temp_dir / "model.pth"
@@ -70,8 +70,10 @@ class TestCLIIntegration:
 
         # Mock model manager to avoid actual model loading
         from unittest.mock import patch
-        from earsegmentationai.api.base import ProcessingResult
+
         import numpy as np
+
+        from earsegmentationai.api.base import ProcessingResult
 
         mock_result = ProcessingResult(
             image=np.ones((256, 256, 3), dtype=np.uint8),
@@ -104,11 +106,13 @@ class TestCLIIntegration:
     ):
         """Test processing image directory."""
         from unittest.mock import patch
+
+        import numpy as np
+
         from earsegmentationai.api.base import (
             BatchProcessingResult,
             ProcessingResult,
         )
-        import numpy as np
 
         # Create mock results
         results = []
@@ -193,7 +197,8 @@ class TestCLIIntegration:
 
     def test_benchmark_command(self, runner, sample_image_files):
         """Test benchmark command."""
-        from unittest.mock import patch, Mock
+        from unittest.mock import Mock, patch
+
         import numpy as np
 
         # Mock processor and its methods

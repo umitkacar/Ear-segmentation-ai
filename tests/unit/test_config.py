@@ -171,7 +171,7 @@ class TestConfig:
         assert yaml_path.exists()
 
         # Load and verify
-        with open(yaml_path, "r") as f:
+        with open(yaml_path) as f:
             loaded_data = yaml.safe_load(f)
 
         assert loaded_data["model"]["name"] == "save_test.pth"

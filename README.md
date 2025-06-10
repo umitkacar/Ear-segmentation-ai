@@ -79,7 +79,7 @@ earsegmentationai process-video path/to/video.mp4 -o output.avi
 ## 📚 Documentation
 
 - [Installation Guide](docs/guides/installation.md)
-- [Quick Start Guide](docs/guides/quickstart.md) 
+- [Quick Start Guide](docs/guides/quickstart.md)
 - [Architecture Overview](docs/development/architecture.md)
 - [API Reference](docs/api/)
 - [Contributing Guide](docs/development/CONTRIBUTING.md)

@@ -129,7 +129,7 @@ result = processor.process(
 # Access probability map
 if result.probability_map is not None:
     prob_map = result.probability_map
-    
+
 # Access visualization
 if result.visualization is not None:
     cv2.imwrite("visualization.jpg", result.visualization)

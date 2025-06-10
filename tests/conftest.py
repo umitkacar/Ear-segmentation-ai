@@ -13,6 +13,7 @@ import cv2
 import numpy as np
 import pytest
 import torch
+
 from earsegmentationai.core.config import Config
 from earsegmentationai.core.model import ModelManager
 

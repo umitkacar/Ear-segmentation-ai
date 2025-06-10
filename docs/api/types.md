@@ -60,7 +60,7 @@ class VideoStats:
 Statistics from camera processing.
 
 ```python
-@dataclass 
+@dataclass
 class CameraStats:
     session_duration: float
     total_frames: int
@@ -286,11 +286,11 @@ class Result(Generic[T]):
     value: Optional[T]
     success: bool
     error: Optional[str]
-    
+
     @property
     def is_ok(self) -> bool:
         return self.success
-    
+
     def unwrap(self) -> T:
         if not self.success:
             raise ValueError(self.error)
@@ -305,7 +305,7 @@ Generic pipeline type.
 class Pipeline(Generic[T, U]):
     def __init__(self, steps: List[Callable[[T], T]]):
         self.steps = steps
-    
+
     def process(self, input_data: T) -> U:
         result = input_data
         for step in self.steps:

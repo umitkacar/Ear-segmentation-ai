@@ -7,7 +7,7 @@ Based on the outdated packages, here are the critical security updates needed:
 1. **Pillow 9.3.0 → 11.2.1**
    - Multiple security vulnerabilities including arbitrary code execution
    - CVE-2022-45199, CVE-2023-44271, CVE-2023-50447
-   
+
 2. **urllib3 2.2.3 → 2.4.0**
    - Security fixes for CRLF injection
    - CVE-2024-37891

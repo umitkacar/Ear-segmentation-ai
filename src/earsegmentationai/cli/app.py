@@ -351,6 +351,7 @@ def benchmark(
 ):
     """Benchmark model performance."""
     import time
+
     import numpy as np
 
     try:

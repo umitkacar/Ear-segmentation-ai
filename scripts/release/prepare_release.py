@@ -11,11 +11,11 @@ def run_command(cmd, check=True):
     """Run a shell command."""
     print(f"Running: {cmd}")
     result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
-    
+
     if check and result.returncode != 0:
         print(f"Error: {result.stderr}")
         sys.exit(1)
-    
+
     return result
 
 
@@ -23,13 +23,13 @@ def check_git_status():
     """Check if git working directory is clean."""
     print("\n=== Checking Git Status ===")
     result = run_command("git status --porcelain")
-    
+
     if result.stdout.strip():
         print("❌ Working directory is not clean!")
         print("Uncommitted changes:")
         print(result.stdout)
         return False
-    
+
     print("✅ Working directory is clean")
     return True
 
@@ -37,7 +37,7 @@ def check_git_status():
 def run_tests():
     """Run all tests."""
     print("\n=== Running Tests ===")
-    
+
     # Unit tests
     print("\nRunning unit tests...")
     result = run_command("poetry run pytest tests/unit/ -v", check=False)
@@ -45,29 +45,31 @@ def run_tests():
         print("❌ Unit tests failed!")
         return False
     print("✅ Unit tests passed")
-    
+
     # Integration tests (without real model download)
     print("\nRunning integration tests...")
-    result = run_command("poetry run pytest tests/integration/ -v -m 'not slow'", check=False)
+    result = run_command(
+        "poetry run pytest tests/integration/ -v -m 'not slow'", check=False
+    )
     if result.returncode != 0:
         print("⚠️  Some integration tests failed (may need real model)")
     else:
         print("✅ Integration tests passed")
-    
+
     return True
 
 
 def run_linting():
     """Run linting and formatting checks."""
     print("\n=== Running Linting ===")
-    
+
     checks = [
         ("Black", "poetry run black --check src/ tests/"),
         ("isort", "poetry run isort --check-only src/ tests/"),
         ("Ruff", "poetry run ruff check src/ tests/"),
         ("Bandit", "poetry run bandit -r src/ -c pyproject.toml"),
     ]
-    
+
     all_passed = True
     for name, cmd in checks:
         print(f"\nRunning {name}...")
@@ -77,14 +79,14 @@ def run_linting():
             all_passed = False
         else:
             print(f"✅ {name} check passed")
-    
+
     return all_passed
 
 
 def check_version():
     """Check version consistency."""
     print("\n=== Checking Version ===")
-    
+
     # Check pyproject.toml
     pyproject_path = Path("pyproject.toml")
     with open(pyproject_path) as f:
@@ -94,7 +96,7 @@ def check_version():
         else:
             print("❌ pyproject.toml version is not 2.0.0")
             return False
-    
+
     # Check __version__.py
     version_path = Path("src/earsegmentationai/__version__.py")
     with open(version_path) as f:
@@ -104,20 +106,20 @@ def check_version():
         else:
             print("❌ __version__.py is not 2.0.0")
             return False
-    
+
     return True
 
 
 def build_package():
     """Build the package."""
     print("\n=== Building Package ===")
-    
+
     # Clean previous builds
     run_command("rm -rf dist/ build/")
-    
+
     # Build
-    result = run_command("poetry build")
-    
+    run_command("poetry build")
+
     # Check output
     dist_files = list(Path("dist").glob("*"))
     if len(dist_files) == 2:  # wheel and tar.gz
@@ -133,7 +135,7 @@ def build_package():
 def check_documentation():
     """Check documentation files."""
     print("\n=== Checking Documentation ===")
-    
+
     required_files = [
         "README.md",
         "docs/project/CHANGELOG.md",
@@ -141,7 +143,7 @@ def check_documentation():
         "docs/development/CONTRIBUTING.md",
         "LICENSE",
     ]
-    
+
     all_present = True
     for file in required_files:
         if Path(file).exists():
@@ -149,14 +151,14 @@ def check_documentation():
         else:
             print(f"❌ {file} missing")
             all_present = False
-    
+
     return all_present
 
 
 def create_release_notes():
     """Create release notes."""
     print("\n=== Creating Release Notes ===")
-    
+
     notes = """# Release v2.0.0
 
 ## 🎉 Major Release - Complete Refactor
@@ -207,10 +209,10 @@ See the [Migration Guide](MIGRATION.md) for detailed instructions. Your existing
 
 Thanks to all contributors who made this release possible!
 """
-    
+
     with open("RELEASE_NOTES.md", "w") as f:
         f.write(notes)
-    
+
     print("✅ Release notes created: RELEASE_NOTES.md")
     return True
 
@@ -220,11 +222,11 @@ def main():
     print("=" * 60)
     print("PREPARE RELEASE v2.0.0")
     print("=" * 60)
-    
+
     # Change to project root
     project_root = Path(__file__).parent.parent.parent
     os.chdir(project_root)
-    
+
     # Run all checks
     checks = [
         ("Git Status", check_git_status),
@@ -235,23 +237,23 @@ def main():
         ("Build Package", build_package),
         ("Release Notes", create_release_notes),
     ]
-    
+
     results = {}
     for name, func in checks:
         results[name] = func()
-    
+
     # Summary
     print("\n" + "=" * 60)
     print("SUMMARY")
     print("=" * 60)
-    
+
     all_passed = True
     for name, passed in results.items():
         status = "✅ PASS" if passed else "❌ FAIL"
         print(f"{name:.<40} {status}")
         if not passed:
             all_passed = False
-    
+
     if all_passed:
         print("\n🎉 All checks passed! Ready for release.")
         print("\nNext steps:")

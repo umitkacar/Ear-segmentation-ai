@@ -2,9 +2,9 @@
 
 from typing import List, Optional, Tuple, Union
 
+import cv2
 import numpy as np
 import torch
-import cv2
 
 from earsegmentationai.core.config import get_config
 from earsegmentationai.core.model import ModelManager

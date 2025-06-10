@@ -10,7 +10,6 @@ import numpy as np
 from earsegmentationai.api.image import ImageProcessor
 from earsegmentationai.api.video import VideoProcessor
 
-
 # Legacy constants (from v1.x)
 ENCODER_NAME = "resnet18"
 ENCODER_WEIGHTS = "imagenet"
@@ -192,38 +191,38 @@ def migrate_v1_to_v2():
     =====================================
     Migration Guide: v1.x to v2.0
     =====================================
-    
+
     1. Model Loading:
        OLD: model = EarModel()
             model.download_models()
             model.load_model("cuda:0")
-       
+
        NEW: processor = ImageProcessor(device="cuda:0")
             # Models are downloaded automatically
-    
+
     2. Image Processing:
        OLD: mask_orig, mask_resized = model.predict(image_path)
-       
+
        NEW: result = processor.process(image_path)
             mask = result.mask
             has_ear = result.has_ear
-    
+
     3. Camera Mode:
        OLD: from camera_mode import process_camera_mode
             process_camera_mode(deviceId=0, device="cuda:0")
-       
+
        NEW: processor = VideoProcessor(device="cuda:0")
             processor.process(0, display=True)
-       
+
        OR:  earsegmentationai webcam --device-id 0
-    
+
     4. CLI Commands:
        OLD: python -m earsegmentationai.main webcam-capture
        NEW: earsegmentationai webcam
-       
+
        OLD: python -m earsegmentationai.main picture-capture
        NEW: earsegmentationai process-image
-    
+
     For more details, see the documentation.
     """
     print(guide)
