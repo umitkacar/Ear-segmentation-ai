@@ -42,4 +42,4 @@ jobs:
       - name: Cli version check
         run: |
              source venv/bin/activate
-             earsegmentationai version
+             poetry run earsegmentationai version

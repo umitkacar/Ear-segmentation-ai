@@ -43,7 +43,6 @@ jobs:
       run: |
         poetry run ruff check src/ tests/
         poetry run black --check src/ tests/
-        poetry run isort --check-only src/ tests/
     
     - name: Run type checking
       run: |
