@@ -376,13 +376,24 @@ class ImageProcessor(BaseProcessor):
             Processing result
         """
         from io import BytesIO
+        from urllib.parse import urlparse
 
         import requests
 
         try:
-            # Download image
+            # Validate URL
+            parsed_url = urlparse(url)
+            if not parsed_url.scheme in ["http", "https"]:
+                raise ProcessingError("Only HTTP(S) URLs are allowed")
+            
+            # Basic SSRF protection - block local addresses
+            if parsed_url.hostname in ["localhost", "127.0.0.1", "0.0.0.0"]:
+                raise ProcessingError("Local addresses are not allowed")
+            
+            # Download image with additional security headers
             logger.info(f"Downloading image from {url}")
-            response = requests.get(url, timeout=30)
+            headers = {"User-Agent": "EarSegmentationAI/2.0"}
+            response = requests.get(url, timeout=30, headers=headers, allow_redirects=False)
             response.raise_for_status()
 
             # Decode image
@@ -402,7 +413,7 @@ class ImageProcessor(BaseProcessor):
                 return_visualization,
                 False,
                 None,
-                filename=url.split("/")[-1].split("?")[0],
+                filename=Path(parsed_url.path).name or "downloaded_image.jpg",
             )
 
             result.metadata["source_url"] = url

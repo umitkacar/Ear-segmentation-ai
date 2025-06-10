@@ -32,6 +32,15 @@ def validate_image_path(path: Union[str, Path]) -> Path:
         ValidationError: If path is invalid
     """
     path = Path(path)
+    
+    # Path traversal protection
+    try:
+        path = path.resolve()
+        # Ensure the path doesn't contain suspicious patterns
+        if ".." in str(path):
+            raise ValidationError("Path traversal detected")
+    except (RuntimeError, ValueError) as e:
+        raise ValidationError(f"Invalid path: {e}")
 
     if not path.exists():
         raise ValidationError(f"Image file not found: {path}")
@@ -61,6 +70,15 @@ def validate_video_path(path: Union[str, Path]) -> Path:
         ValidationError: If path is invalid
     """
     path = Path(path)
+    
+    # Path traversal protection
+    try:
+        path = path.resolve()
+        # Ensure the path doesn't contain suspicious patterns
+        if ".." in str(path):
+            raise ValidationError("Path traversal detected")
+    except (RuntimeError, ValueError) as e:
+        raise ValidationError(f"Invalid path: {e}")
 
     if not path.exists():
         raise ValidationError(f"Video file not found: {path}")
