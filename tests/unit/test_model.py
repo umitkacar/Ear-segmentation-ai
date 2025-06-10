@@ -76,11 +76,13 @@ class TestModelManager:
             manager = ModelManager()
             model_path = temp_dir / "test_model.pth"
 
-            manager._download_model("http://example.com/model.pth", model_path)
+            # Use allowed host for testing
+            test_url = "https://github.com/test/model.pth"
+            manager._download_model(test_url, model_path)
 
             assert model_path.exists()
             mock_get.assert_called_once_with(
-                "http://example.com/model.pth", stream=True
+                test_url, stream=True, headers={"User-Agent": "EarSegmentationAI/2.0"}, allow_redirects=False
             )
 
     @patch("requests.get", side_effect=Exception("Network error"))
@@ -96,7 +98,7 @@ class TestModelManager:
                 ModelLoadError, match="Failed to download model"
             ):
                 manager._download_model(
-                    "http://example.com/model.pth", model_path
+                    "https://github.com/test/model.pth", model_path
                 )
 
             # File should be cleaned up on failure
