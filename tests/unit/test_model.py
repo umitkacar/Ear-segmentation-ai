@@ -82,7 +82,10 @@ class TestModelManager:
 
             assert model_path.exists()
             mock_get.assert_called_once_with(
-                test_url, stream=True, headers={"User-Agent": "EarSegmentationAI/2.0"}, allow_redirects=False
+                test_url,
+                stream=True,
+                headers={"User-Agent": "EarSegmentationAI/2.0"},
+                allow_redirects=False,
             )
 
     @patch("requests.get", side_effect=Exception("Network error"))
