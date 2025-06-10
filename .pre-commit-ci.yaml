@@ -1,4 +1,0 @@
-# Configuration for pre-commit.ci
-# Disable pre-commit.ci
-ci:
-  skip: all
