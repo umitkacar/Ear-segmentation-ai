@@ -17,29 +17,19 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Set up a virtual environment for Python ${{ matrix.python-version }}
+      - name: Install Poetry
         run: |
-             python -m pip install --upgrade virtualenv
-             virtualenv venv
-             source venv/bin/activate
-             which python
+          curl -sSL https://install.python-poetry.org | python3 -
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
 
-      - name: Install the base dependencies
+      - name: Check Poetry installation
         run: |
-             source venv/bin/activate
-             python -m pip install --upgrade poetry
+          poetry --version
 
-      - name: Check the correctness of the project config
+      - name: Install dependencies
         run: |
-             source venv/bin/activate
-             poetry check
+          poetry install --no-interaction
 
-      - name: Install the package
+      - name: Check CLI version
         run: |
-             source venv/bin/activate
-             poetry install
-
-      - name: Cli version check
-        run: |
-             source venv/bin/activate
-             poetry run earsegmentationai version
+          poetry run earsegmentationai version
