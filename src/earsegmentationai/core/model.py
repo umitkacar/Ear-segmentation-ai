@@ -1,7 +1,6 @@
 """Model management for Ear Segmentation AI."""
 
 import hashlib
-import os
 from pathlib import Path
 from typing import Dict, Optional, Union
 

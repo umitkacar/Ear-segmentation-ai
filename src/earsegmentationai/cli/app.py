@@ -133,7 +133,7 @@ def process_image(
             console.print(table)
 
             # Print summary
-            console.print(f"\n[bold]Summary:[/bold]")
+            console.print("\n[bold]Summary:[/bold]")
             console.print(f"Total images: {len(result)}")
             console.print(
                 f"Detection rate: [green]{result.detection_rate:.1f}%[/green]"
@@ -418,7 +418,7 @@ def benchmark(
 
         # Model info
         model_info = processor.model_manager.get_model_info()
-        console.print(f"\n[bold]Model Info:[/bold]")
+        console.print("\n[bold]Model Info:[/bold]")
         console.print(f"Architecture: {model_info['architecture']}")
         console.print(f"Parameters: {model_info.get('parameters', 'N/A'):,}")
 

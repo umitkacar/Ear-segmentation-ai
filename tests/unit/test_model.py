@@ -1,9 +1,8 @@
 """Unit tests for model module."""
 
 import pytest
-from unittest.mock import Mock, patch, MagicMock
+from unittest.mock import Mock, patch
 import torch
-from pathlib import Path
 
 from earsegmentationai.core.model import ModelManager
 from earsegmentationai.utils.exceptions import DeviceError, ModelLoadError

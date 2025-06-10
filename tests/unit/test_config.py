@@ -1,7 +1,5 @@
 """Unit tests for configuration module."""
 
-import tempfile
-from pathlib import Path
 
 import pytest
 import yaml
@@ -128,7 +126,7 @@ class TestConfig:
         cache_dir = temp_dir / "test_cache"
         log_dir = temp_dir / "test_logs"
 
-        config = Config(cache_dir=cache_dir, log_dir=log_dir)
+        Config(cache_dir=cache_dir, log_dir=log_dir)
 
         assert cache_dir.exists()
         assert log_dir.exists()

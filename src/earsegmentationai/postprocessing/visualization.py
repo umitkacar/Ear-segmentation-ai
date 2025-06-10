@@ -1,9 +1,8 @@
 """Visualization utilities for ear segmentation results."""
 
-from typing import List, Optional, Tuple, Union
+from typing import List, Optional, Tuple
 
 import cv2
-import imgviz
 import numpy as np
 
 from earsegmentationai.utils.logging import get_logger

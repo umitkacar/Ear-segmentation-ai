@@ -1,7 +1,7 @@
 """Image processing API for ear segmentation."""
 
 from pathlib import Path
-from typing import Dict, List, Optional, Union
+from typing import List, Optional, Union
 
 import cv2
 import numpy as np

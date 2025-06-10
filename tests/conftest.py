@@ -1,20 +1,18 @@
 """Pytest configuration and fixtures."""
 
+import shutil
 import sys
+import tempfile
 from pathlib import Path
+from typing import Generator
 
 # Add src to Python path
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
-
-import shutil
-import tempfile
-from typing import Generator
 
 import cv2
 import numpy as np
 import pytest
 import torch
-
 from earsegmentationai.core.config import Config
 from earsegmentationai.core.model import ModelManager
 

@@ -2,7 +2,6 @@
 
 import numpy as np
 import pytest
-import torch
 
 from earsegmentationai.core.predictor import EarPredictor, StreamPredictor
 from earsegmentationai.utils.exceptions import ProcessingError

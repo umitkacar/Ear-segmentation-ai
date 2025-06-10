@@ -1,7 +1,5 @@
 """Integration tests for CLI."""
 
-import json
-from pathlib import Path
 
 import pytest
 from typer.testing import CliRunner
@@ -182,7 +180,7 @@ class TestCLIIntegration:
 
         # Mock the process_video function since webcam calls it
         with patch("earsegmentationai.cli.app.process_video") as mock_process:
-            result = runner.invoke(
+            runner.invoke(
                 app, ["webcam", "--device-id", "0", "--skip-frames", "2"]
             )
 

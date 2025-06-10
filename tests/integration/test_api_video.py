@@ -33,7 +33,7 @@ class TestVideoProcessorIntegration:
         processor = VideoProcessor(model_manager=mock_model_manager)
         output_path = temp_dir / "output_video.avi"
 
-        stats = processor.process(
+        processor.process(
             sample_video_file,
             output_path=output_path,
             display=False,
@@ -78,7 +78,7 @@ class TestVideoProcessorIntegration:
         def frame_callback(result):
             callback_results.append(result)
 
-        stats = processor.process(
+        processor.process(
             sample_video_file,
             display=False,
             callback=frame_callback,

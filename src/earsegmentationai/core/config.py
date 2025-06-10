@@ -1,9 +1,7 @@
 """Configuration management for Ear Segmentation AI."""
 
-import os
-from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Dict, List, Optional, Union
+from typing import Optional, Union
 
 import yaml
 from pydantic import BaseModel, Field, field_validator, ConfigDict

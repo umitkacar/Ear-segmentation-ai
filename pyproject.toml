@@ -99,6 +99,19 @@ exclude = '''
 [tool.bandit]
 tests = ["B201", "B301"]
 
+[tool.ruff]
+line-length = 88
+target-version = "py38"
+ignore = ["E402", "E501"]
+select = ["E", "F", "W"]
+exclude = [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "build",
+    "dist",
+]
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

@@ -10,10 +10,9 @@ from earsegmentationai.api.base import BaseProcessor, ProcessingResult
 from earsegmentationai.core.predictor import StreamPredictor
 from earsegmentationai.preprocessing.validators import (
     validate_camera_id,
-    validate_directory,
     validate_video_path,
 )
-from earsegmentationai.utils.exceptions import ProcessingError, VideoError
+from earsegmentationai.utils.exceptions import VideoError
 from earsegmentationai.utils.logging import get_logger
 
 logger = get_logger(__name__)

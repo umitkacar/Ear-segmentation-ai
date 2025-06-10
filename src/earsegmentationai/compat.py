@@ -9,7 +9,6 @@ import numpy as np
 
 from earsegmentationai.api.image import ImageProcessor
 from earsegmentationai.api.video import VideoProcessor
-from earsegmentationai.core.model import ModelManager
 
 
 # Legacy constants (from v1.x)

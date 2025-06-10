@@ -2,7 +2,6 @@
 
 import numpy as np
 import pytest
-from pathlib import Path
 
 from earsegmentationai.api.image import ImageProcessor
 from earsegmentationai.api.base import ProcessingResult, BatchProcessingResult
@@ -88,7 +87,7 @@ class TestImageProcessorIntegration:
         processor = ImageProcessor(model_manager=mock_model_manager)
         output_dir = temp_dir / "output"
 
-        result = processor.process(
+        processor.process(
             test_image,
             save_results=True,
             output_dir=output_dir,
@@ -109,7 +108,7 @@ class TestImageProcessorIntegration:
         processor = ImageProcessor(model_manager=mock_model_manager)
         output_dir = temp_dir / "batch_output"
 
-        result = processor.process(
+        processor.process(
             sample_image_files, save_results=True, output_dir=output_dir
         )
 
