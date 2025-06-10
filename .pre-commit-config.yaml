@@ -2,7 +2,7 @@
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v4.4.0
     hooks:
     -   id: check-added-large-files
     -   id: check-toml
@@ -46,6 +46,4 @@ repos:
         args: ["-c", "pyproject.toml"]
         additional_dependencies: [ "bandit[toml]" ]
 
-ci:
-    autofix_commit_msg: 🎨 [pre-commit.ci] Auto format from pre-commit.com hooks
-    autoupdate_commit_msg: "ci(pre-commit.ci): ⬆ pre-commit autoupdate"
+# Pre-commit.ci configuration moved to .pre-commit-ci.yaml
