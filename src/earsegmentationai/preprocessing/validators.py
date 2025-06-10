@@ -32,7 +32,7 @@ def validate_image_path(path: Union[str, Path]) -> Path:
         ValidationError: If path is invalid
     """
     path = Path(path)
-    
+
     # Path traversal protection
     try:
         path = path.resolve()
@@ -70,7 +70,7 @@ def validate_video_path(path: Union[str, Path]) -> Path:
         ValidationError: If path is invalid
     """
     path = Path(path)
-    
+
     # Path traversal protection
     try:
         path = path.resolve()

@@ -385,15 +385,17 @@ class ImageProcessor(BaseProcessor):
             parsed_url = urlparse(url)
             if parsed_url.scheme not in ["http", "https"]:
                 raise ProcessingError("Only HTTP(S) URLs are allowed")
-            
+
             # Basic SSRF protection - block local addresses
             if parsed_url.hostname in ["localhost", "127.0.0.1", "0.0.0.0"]:
                 raise ProcessingError("Local addresses are not allowed")
-            
+
             # Download image with additional security headers
             logger.info(f"Downloading image from {url}")
             headers = {"User-Agent": "EarSegmentationAI/2.0"}
-            response = requests.get(url, timeout=30, headers=headers, allow_redirects=False)
+            response = requests.get(
+                url, timeout=30, headers=headers, allow_redirects=False
+            )
             response.raise_for_status()
 
             # Decode image

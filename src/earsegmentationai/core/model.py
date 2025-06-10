@@ -108,21 +108,32 @@ class ModelManager:
             ModelLoadError: If download fails
         """
         from urllib.parse import urlparse
-        
+
         try:
             # Validate URL
             parsed_url = urlparse(url)
             if parsed_url.scheme not in ["http", "https"]:
-                raise ModelLoadError("Only HTTP(S) URLs are allowed for model download")
-            
+                raise ModelLoadError(
+                    "Only HTTP(S) URLs are allowed for model download"
+                )
+
             # Only allow downloads from trusted sources
-            allowed_hosts = ["github.com", "raw.githubusercontent.com", "huggingface.co", "pytorch.org"]
+            allowed_hosts = [
+                "github.com",
+                "raw.githubusercontent.com",
+                "huggingface.co",
+                "pytorch.org",
+            ]
             if parsed_url.hostname not in allowed_hosts:
-                raise ModelLoadError(f"Model downloads only allowed from trusted sources: {allowed_hosts}")
-            
+                raise ModelLoadError(
+                    f"Model downloads only allowed from trusted sources: {allowed_hosts}"
+                )
+
             logger.info(f"Downloading model from {url}")
             headers = {"User-Agent": "EarSegmentationAI/2.0"}
-            response = requests.get(url, stream=True, headers=headers, allow_redirects=False)
+            response = requests.get(
+                url, stream=True, headers=headers, allow_redirects=False
+            )
             response.raise_for_status()
 
             total_size = int(response.headers.get("content-length", 0))
@@ -239,17 +250,23 @@ class ModelManager:
 
             # Verify model integrity before loading
             if self.config.model.expected_hash:
-                if not self._verify_model(model_path, self.config.model.expected_hash):
+                if not self._verify_model(
+                    model_path, self.config.model.expected_hash
+                ):
                     raise ModelLoadError("Model hash verification failed")
-            
+
             # Load weights with restricted unpickling for security
             logger.info(f"Loading model weights from {model_path}")
             try:
                 # Use weights_only=True for security (PyTorch 2.0+)
-                checkpoint = torch.load(model_path, map_location=self.device, weights_only=True)
+                checkpoint = torch.load(
+                    model_path, map_location=self.device, weights_only=True
+                )
             except TypeError:
                 # Fallback for older PyTorch versions
-                logger.warning("Loading with pickle (less secure). Consider upgrading PyTorch.")
+                logger.warning(
+                    "Loading with pickle (less secure). Consider upgrading PyTorch."
+                )
                 checkpoint = torch.load(model_path, map_location=self.device)
 
             # Handle different formats
