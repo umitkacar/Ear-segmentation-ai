@@ -223,7 +223,7 @@ def main():
     print("=" * 60)
     
     # Change to project root
-    project_root = Path(__file__).parent.parent
+    project_root = Path(__file__).parent.parent.parent
     os.chdir(project_root)
     
     # Run all checks
