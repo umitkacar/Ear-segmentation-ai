@@ -55,7 +55,12 @@ earsegmentationai process-image path/to/directory/ --save-mask
 
 To upgrade to the fixed version:
 ```bash
-pip install --upgrade earsegmentationai
+pip install --upgrade earsegmentationai==2.0.0
+```
+
+Note: v2.0.0 is currently being deployed to PyPI. If the above command doesn't work yet, you can install directly from GitHub:
+```bash
+pip install git+https://github.com/umitkacar/Ear-segmentation-ai.git@v2.0.0
 ```
 
 If you need to stay on v1.x for any reason, you can work around the issue by:
