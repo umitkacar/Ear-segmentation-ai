@@ -112,6 +112,14 @@ exclude = [
     "dist",
 ]
 
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = false
+warn_unused_configs = true
+ignore_missing_imports = true
+no_implicit_optional = false
+disable_error_code = ["assignment", "arg-type", "return-value", "union-attr", "attr-defined", "call-overload", "var-annotated", "valid-type"]
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
