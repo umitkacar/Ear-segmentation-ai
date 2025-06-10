@@ -9,6 +9,11 @@
 - [ ] Add architecture diagrams in `assets/images/`
 - [ ] Create development environment setup guide
 
+### Security & Compatibility
+- [ ] Drop Python 3.8 support to enable urllib3 2.4.0+ update (Python 3.8 EOL: October 2024)
+- [ ] Upgrade to PyTorch 2.x after thorough testing with existing models
+- [ ] Address remaining security vulnerabilities identified by GitHub Dependabot
+
 ### Testing
 - [ ] Add test fixtures in `tests/fixtures/images/` - sample test images
 - [ ] Add mock models in `tests/fixtures/models/` - for unit testing
@@ -130,4 +135,4 @@
 
 ---
 
-Last updated: 2025-01-06
+Last updated: 2025-06-10
