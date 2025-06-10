@@ -149,3 +149,29 @@ output.avi
 
 # ruff_cache
 ruff_cache/
+
+# Claude AI configuration
+CLAUDE.md
+
+# New v2.0 structure
+src/earsegmentationai.egg-info/
+.venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+htmlcov/
+coverage.xml
+.coverage
+*.log
+
+# Release files
+RELEASE_NOTES.md
+dist/
+build/
+
+# Test outputs
+tests/fixtures/images/output/
+tests/integration/output/
+output/
+test_output/
+test_results/
