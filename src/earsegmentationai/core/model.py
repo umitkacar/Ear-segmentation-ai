@@ -112,7 +112,7 @@ class ModelManager:
         try:
             # Validate URL
             parsed_url = urlparse(url)
-            if not parsed_url.scheme in ["http", "https"]:
+            if parsed_url.scheme not in ["http", "https"]:
                 raise ModelLoadError("Only HTTP(S) URLs are allowed for model download")
             
             # Only allow downloads from trusted sources

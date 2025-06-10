@@ -383,7 +383,7 @@ class ImageProcessor(BaseProcessor):
         try:
             # Validate URL
             parsed_url = urlparse(url)
-            if not parsed_url.scheme in ["http", "https"]:
+            if parsed_url.scheme not in ["http", "https"]:
                 raise ProcessingError("Only HTTP(S) URLs are allowed")
             
             # Basic SSRF protection - block local addresses
