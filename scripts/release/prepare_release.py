@@ -136,10 +136,9 @@ def check_documentation():
     
     required_files = [
         "README.md",
-        "README_NEW.md",
-        "CHANGELOG.md",
-        "MIGRATION.md",
-        "CONTRIBUTING.md",
+        "docs/project/CHANGELOG.md",
+        "docs/migration/MIGRATION.md",
+        "docs/development/CONTRIBUTING.md",
         "LICENSE",
     ]
     
