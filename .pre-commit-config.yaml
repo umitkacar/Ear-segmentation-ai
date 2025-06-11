@@ -1,5 +1,0 @@
-# Pre-commit hooks configuration
-# Pre-commit.ci has been disabled for this repository
-# To run pre-commit locally: pre-commit run --all-files
-
-# Temporarily disabled - see .pre-commit-config.yaml.disabled
