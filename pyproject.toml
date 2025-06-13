@@ -45,6 +45,7 @@ commonmark = "^0.9.1"
 pygments = "^2.14.0"
 rich = "^13.3.1"
 shellingham = "^1.5.0.post1"
+pydantic = "^2.0.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.1.0"
@@ -63,7 +64,6 @@ pytest = "^7.2.0"
 pytest-cov = "^4.0.0"
 pytest-mock = "^3.10.0"
 pytest-asyncio = "^0.20.0"
-pydantic = "^2.0.0"
 
 
 [tool.poe.tasks]

@@ -24,6 +24,7 @@ class BaseProcessor(ABC):
         model_manager: Optional[ModelManager] = None,
         device: Optional[str] = None,
         threshold: float = 0.5,
+        batch_size: int = 1,
     ):
         """Initialize base processor.
 
@@ -32,12 +33,17 @@ class BaseProcessor(ABC):
             model_manager: Model manager. If None, creates new one.
             device: Processing device. If None, uses config default.
             threshold: Binary threshold for mask generation.
+            batch_size: Batch size for processing multiple images.
         """
         self.config = config or get_config()
 
         # Override device if specified
         if device:
             self.config.processing.device = device
+
+        # Override batch_size if specified
+        if batch_size != 1:
+            self.config.processing.batch_size = batch_size
 
         # Initialize components
         self.model_manager = model_manager or ModelManager()
