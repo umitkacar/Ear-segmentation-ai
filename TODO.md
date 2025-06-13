@@ -9,6 +9,14 @@
 - [ ] Add architecture diagrams in `assets/images/`
 - [ ] Create development environment setup guide
 
+### Code Quality (Codex AI Agent Recommendations)
+- [x] ~~Add expected_hash field to ModelConfig~~ ✓ Fixed
+- [x] ~~Move pydantic to runtime dependencies~~ ✓ Fixed
+- [x] ~~Apply batch_size option in CLI~~ ✓ Fixed
+- [ ] Add unit tests for utility modules (utils/exceptions.py, utils/logging.py, visualization.py)
+- [ ] Enhance documentation with architecture diagrams and setup guide
+- [ ] Provide Docker-based deployment
+
 ### Security & Compatibility
 - [ ] Drop Python 3.8 support to enable urllib3 2.4.0+ update (Python 3.8 EOL: October 2024)
 - [ ] Upgrade to PyTorch 2.x after thorough testing with existing models
@@ -135,4 +143,5 @@
 
 ---
 
-Last updated: 2025-06-10
+Last updated: 2025-06-13
+Contributors: Umit Kacar, Codex AI Agent
