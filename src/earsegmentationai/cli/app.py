@@ -96,7 +96,7 @@ def process_image(
             transient=True,
         ) as progress:
             progress.add_task("Initializing model...", total=None)
-            processor = ImageProcessor(device=device, threshold=threshold)
+            processor = ImageProcessor(device=device, threshold=threshold, batch_size=batch_size)
 
         # Configure output
         save_results = save_mask or save_visualization
