@@ -26,6 +26,7 @@ class TestModelConfig:
         assert config.encoder_name == "resnet18"
         assert config.classes == 1
         assert config.activation == "sigmoid"
+        assert config.expected_hash is None
 
     def test_architecture_validation(self):
         """Test architecture validation."""
@@ -44,11 +45,13 @@ class TestModelConfig:
             architecture="DeepLabV3",
             encoder_name="resnet50",
             classes=2,
+            expected_hash="abc123",
         )
         assert config.name == "custom_model.pth"
         assert config.architecture == "DeepLabV3"
         assert config.encoder_name == "resnet50"
         assert config.classes == 2
+        assert config.expected_hash == "abc123"
 
 
 class TestProcessingConfig:
