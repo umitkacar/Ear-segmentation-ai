@@ -28,6 +28,10 @@ class ModelConfig(BaseModel):
     activation: Optional[str] = Field(
         default="sigmoid", description="Output activation"
     )
+    expected_hash: Optional[str] = Field(
+        default=None,
+        description="Expected SHA256 hash of the model file for integrity check",
+    )
 
     @field_validator("architecture")
     @classmethod
