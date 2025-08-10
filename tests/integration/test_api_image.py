@@ -117,9 +117,9 @@ class TestImageProcessorIntegration:
         assert (output_dir / "summary.json").exists()
 
         # Check individual masks
-        for i in range(len(sample_image_files)):
-            # Filename includes .png extension
-            assert (output_dir / f"test_image_{i}.png_mask.png").exists()
+        for path in sample_image_files:
+            expected = output_dir / f"{path.name}_mask.png"
+            assert expected.exists()
 
     def test_error_handling_invalid_path(self, mock_model_manager):
         """Test error handling for invalid path."""

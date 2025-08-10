@@ -107,13 +107,10 @@ class TestModelManager:
             # File should be cleaned up on failure
             assert not model_path.exists()
 
-    def test_verify_model_exists(self, temp_dir):
+    def test_verify_model_exists(self, sample_model_file):
         """Test model verification when file exists."""
         manager = ModelManager()
-        model_path = temp_dir / "model.pth"
-        model_path.write_bytes(b"model data")
-
-        assert manager._verify_model(model_path) is True
+        assert manager._verify_model(sample_model_file) is True
 
     def test_verify_model_not_exists(self, temp_dir):
         """Test model verification when file doesn't exist."""

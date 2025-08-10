@@ -124,24 +124,16 @@ def mock_model_manager(mock_model, test_config):
 
 
 @pytest.fixture
-def sample_image_files(temp_dir: Path) -> list:
-    """Create sample image files."""
-    image_dir = temp_dir / "images"
-    image_dir.mkdir(exist_ok=True)
+def sample_image_files() -> list[Path]:
+    """Provide sample image file paths."""
+    image_dir = Path(__file__).parent / "fixtures" / "images"
+    return sorted(image_dir.glob("*.ppm"))
 
-    files = []
-    for i in range(3):
-        # Create test image
-        image = np.zeros((256, 256, 3), dtype=np.uint8)
-        cv2.circle(image, (128, 128), 50 + i * 10, (255, 255, 255), -1)
 
-        # Save image
-        filename = f"test_image_{i}.png"
-        filepath = image_dir / filename
-        cv2.imwrite(str(filepath), image)
-        files.append(filepath)
-
-    return files
+@pytest.fixture
+def sample_model_file() -> Path:
+    """Provide path to a fake model file."""
+    return Path(__file__).parent / "fixtures" / "models" / "fake_model.pth"
 
 
 @pytest.fixture
