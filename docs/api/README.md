@@ -6,9 +6,9 @@ This directory contains the API documentation for Ear Segmentation AI.
 
 - [Image Processing API](image.md) - Process static images
 - [Video Processing API](video.md) - Process video streams
-- [Base Classes](base.md) - Common base classes and types
+- [Base Processing API](base.md) - Shared processor functionality and results
 - [Configuration API](config.md) - Configuration management
-- [Model API](model.md) - Model management and inference
+- [Model Management API](model.md) - Model download, caching and validation
 
 ## Quick Links
 
